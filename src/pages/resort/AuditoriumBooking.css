@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@400;500;600&display=swap");
+
+.auditorium-booking-page {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  font-family: "Outfit", sans-serif;
+  background: #f9f9f9;
+}
+
+.auditorium-booking-title-card {
+  background: #ffffff;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.auditorium-booking-title-card h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.auditorium-booking-subheading {
+  color: #777;
+  font-size: 14px;
+}
+
+.auditorium-booking-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.auditorium-booking-left h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.auditorium-booking-left h2::after,
+.auditorium-booking-form-card h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #b0895a;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.auditorium-booking-features {
+  list-style: none;
+  padding-left: 0;
+}
+
+.auditorium-booking-features li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.auditorium-booking-form-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.auditorium-booking-form-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.auditorium-booking-input-label {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.auditorium-booking-input-field,
+.auditorium-booking-form-card input,
+.auditorium-booking-form-card select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.auditorium-booking-price-box {
+  font-weight: 600;
+  margin: 10px 0;
+  color: #b0895a;
+}
+
+.auditorium-booking-error-text {
+  color: red;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.auditorium-booking-btn {
+  width: 100%;
+  padding: 12px;
+  background: #b0895a;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.auditorium-booking-red-btn {
+  background: #e31b23 !important;
+  color: #fff !important;
+}
+
+.auditorium-booking-success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.auditorium-booking-success-modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 360px;
+  animation: auditorium-booking-pop 0.4s ease;
+}
+
+.auditorium-booking-success-modal h3 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 10px;
+}
+
+.auditorium-booking-success-modal p {
+  margin-bottom: 18px;
+}
+
+.auditorium-booking-success-modal button {
+  background: #1a92c2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@keyframes auditorium-booking-pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .auditorium-booking-layout {
+    grid-template-columns: 1fr;
+  }
+}

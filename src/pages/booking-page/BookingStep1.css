@@ -1,0 +1,241 @@
+.booking-s1-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px 60px;
+}
+
+.booking-s1-waterpark {
+  margin-bottom: 18px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.booking-s1-radio {
+  cursor: pointer;
+}
+.booking-s1-radio input {
+  margin: 0px 8px !important;
+}
+
+.booking-s1-card {
+  width: 625px;
+  max-width: 100%;
+  background: white;
+  border-radius: 10px;
+  padding: 28px 24px;
+  box-shadow: 0 0px 2px 2px rgba(0, 0, 0, 0.06);
+}
+
+.booking-s1-title {
+  margin-bottom: 32px;
+  font-size: 22px;
+  font-weight: 500;
+
+  font-family: "Playfair Display";
+  font-family: "Outfit";
+}
+
+.booking-s1-fields {
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.booking-s1-field {
+  margin-bottom: 18px;
+}
+
+.booking-s1-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.booking-s1-input {
+  width: 100%;
+  padding: 8px 8px 8px 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+
+  background-color: #f6f6f6;
+}
+.booking-s1-input:focus {
+  outline: none;
+
+  box-shadow: 0px 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.booking-s1-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Ensure date picker icon remains visible across browsers */
+input[type="date"].booking-s1-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #f6f6f6;
+}
+
+/* Remove spinners/clear buttons where applicable */
+.booking-s1-input::-webkit-clear-button,
+.booking-s1-input::-webkit-inner-spin-button {
+  display: none;
+}
+.booking-s1-guest-rows {
+  margin-bottom: 32px;
+}
+.booking-s1-guest-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.booking-s1-guest-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+
+  margin-bottom: 4px;
+}
+
+.booking-s1-guest-sub {
+  font-size: 14px;
+  color: #777;
+}
+
+.booking-s1-counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.booking-s1-counter-btn {
+  /* width: 34px; */
+  /* height: 34px; */
+  font-size: 20px;
+
+  font-weight: 300;
+
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+
+.booking-s1-counter-value {
+  min-width: 20px;
+  text-align: center;
+}
+
+.booking-s1-divider {
+  border: none;
+  border-top: 1px solid #eee;
+
+  margin-bottom: 18px;
+}
+
+.booking-s1-summary {
+  background-color: rgba(0, 132, 255, 0.1);
+
+  border-radius: 10px;
+  padding: 20px;
+
+  margin-bottom: 32px;
+}
+
+.booking-s1-summary-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.booking-s1-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.booking-s1-btn {
+  width: 100%;
+  font-size: 16px;
+}
+.booking-s1-btn-back {
+  padding: 10px 28px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+
+.booking-s1-btn-continue {
+  padding: 10px 28px;
+  border-radius: 8px;
+  border: none;
+  background: #15803d;
+  color: white;
+  cursor: pointer;
+}
+
+.booking-s1-btn-continue:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .booking-s1-container {
+    padding: 110px 16px 50px;
+  }
+  .booking-s1-fields {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .booking-s1-card {
+    padding: 22px 18px;
+  }
+  .booking-s1-fields {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .booking-s1-waterpark {
+    gap: 12px;
+  }
+  .booking-s1-buttons {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  .booking-s1-btn {
+    width: 100%;
+  }
+  .booking-s1-input::-webkit-calendar-picker-indicator {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .booking-s1-container {
+    padding: 100px 12px 40px;
+  }
+  .booking-s1-title {
+    font-size: 20px;
+  }
+  .booking-s1-label {
+    font-size: 15px;
+  }
+  .booking-s1-input {
+    font-size: 15px;
+    padding: 10px 10px;
+  }
+}

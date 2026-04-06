@@ -1,0 +1,153 @@
+/* // =============================
+// BookingDetail.css
+// ============================= */
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 150px;
+  /* background: #f3f4f6; */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.summary-card {
+  width: 100%;
+  max-width: 640px;
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.card-header img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.header-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.location {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 18px 0;
+}
+
+/* SECTION */
+.section h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.section p {
+  margin: 0;
+  color: #374151;
+}
+
+/* TICKET ROW */
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.price-block {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.new-price {
+  font-weight: 600;
+}
+
+/* ADDONS */
+.addon-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+/* PRICE */
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.price-row.total {
+  font-weight: 700;
+  font-size: 17px;
+  margin-top: 6px;
+  color: #111827;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.pay-btn {
+  flex: 1;
+  padding: 14px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pay-btn:hover{
+    background:rgb(1, 87, 1);
+}
+
+
+.cancel-btn {
+  flex: 1;
+  padding: 14px;
+  background: #e31b23;
+  color: white;
+  border: 2px solid #e31b23;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.cancel-btn:hover {
+  background: #c0161d;
+}

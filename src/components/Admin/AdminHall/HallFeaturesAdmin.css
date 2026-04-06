@@ -1,0 +1,52 @@
+.feature-page {
+  padding: 30px;
+}
+
+.feature-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.feature-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.feature-form button {
+  background: #198754;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+}
+
+.feature-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.feature-table th,
+.feature-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.edit {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 6px;
+}
+
+.delete {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+}

@@ -1,0 +1,508 @@
+.Admin-ride-guest-container{
+padding:20px;
+background:#f8fafc;
+font-family:Poppins;
+}
+
+
+/* TOP BAR */
+
+.Admin-ride-top-bar{
+display:flex;
+justify-content:flex-end;
+align-items:center;
+margin-bottom:15px;
+}
+
+.Admin-ride-search-box{
+display:flex;
+align-items:center;
+gap:10px;
+background:white;
+padding:10px 15px;
+border-radius:8px;
+border:1px solid #ddd;
+width:300px;
+}
+
+.Admin-ride-search-box input{
+border:none;
+outline:none;
+width:100%;
+}
+
+.Admin-ride-bell-icon{
+font-size:20px;
+color:#555;
+}
+
+
+/* TITLE */
+
+.Admin-ride-page-title{
+font-size:22px;
+font-weight:600;
+margin-bottom:15px;
+}
+
+
+
+/* ACTION BAR */
+
+.Admin-ride-action-bar{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  margin-bottom:15px;
+  gap: 12px;   /* 👈 ADD THIS */
+}
+
+.Admin-ride-left-buttons button{
+padding:8px 16px;
+margin-right:10px;
+border-radius:20px;
+border:none;
+cursor:pointer;
+}
+
+.Admin-ride-checkin-btn{
+background:white;
+border:1px solid #ddd;
+padding: 6px 6px;
+border-radius: 5px;
+align-items: center;
+}
+
+.Admin-ride-checkout-btn{
+background:#f1f5f9;
+}
+
+.Admin-ride-right-buttons{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.Admin-ride-filter-btn{
+padding:8px 14px;
+background:white;
+border:1px solid #ddd;
+border-radius:8px;
+cursor:pointer;
+display:flex;
+gap:6px;
+align-items:center;
+}
+
+.Admin-ride-room-search{
+display:flex;
+align-items:center;
+gap:10px;
+background:white;
+padding:10px 15px;
+border-radius:8px;
+border:1px solid #ddd;
+width:300px;
+}
+
+.Admin-ride-room-search input{
+border:none;
+outline:none;
+}
+
+
+
+/* TABLE */
+
+.Admin-ride-table-wrapper{
+background:white;
+border-radius:10px;
+border:1px solid #e5e7eb;
+overflow:hidden;
+}
+
+.Admin-ride-table-wrapper table{
+width:100%;
+border-collapse:collapse;
+}
+
+.Admin-ride-table-wrapper thead{
+background:#f1f5f9;
+}
+
+.Admin-ride-table-wrapper th{
+padding:14px;
+text-align:left;
+font-size:14px;
+}
+
+.Admin-ride-table-wrapper td{
+padding:14px;
+font-size:14px;
+}
+
+.Admin-ride-table-wrapper tbody tr{
+border-top:1px solid #eee;
+}
+
+.Admin-ride-menu-icon{
+cursor:pointer;
+color:#777;
+}
+
+
+
+/* STATUS */
+
+.Admin-ride-status{
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:500;
+}
+
+.Admin-ride-clean{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.Admin-ride-dirty{
+background:#fee2e2;
+color:#ef4444;
+}
+
+.Admin-ride-inspected{
+background:#d1fae5;
+color:#10b981;
+}
+
+.Admin-ride-pickup{
+background:#fde68a;
+color:#d97706;
+}
+
+
+
+/* PAGINATION */
+
+.Admin-ride-pagination{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:20px;
+}
+
+.Admin-ride-page-numbers span{
+margin:0 4px;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.Admin-ride-page-numbers .active{
+background:#2563eb;
+color:white;
+}
+
+.Admin-ride-page-btn{
+padding:6px 12px;
+border:1px solid #ddd;
+background:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* BUTTONS */
+.Admin-ride-edit-btn{
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;   /* IMPORTANT */
+  width: auto;             /* IMPORTANT */
+  margin-right: 2px;
+}
+
+.Admin-ride-delete-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;   /* IMPORTANT */
+  width: auto;             /* IMPORTANT */
+  margin-top: 2px;
+}
+
+/* EDIT */
+.Admin-ride-edit-btn {
+  background: #ffa000;
+}
+
+.Admin-ride-edit-btn:hover {
+  background: #e68900;
+}
+
+/* DELETE */
+.Admin-ride-delete-btn {
+  background: #d32f2f;
+}
+
+.Admin-ride-delete-btn:hover {
+  background: #b71c1c;
+}
+
+.Admin-ride-actions {
+  display: flex;
+  gap: 10px;   /* space between buttons */
+  justify-content: center; /* optional */
+}
+
+.Admin-ride-modal-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.Admin-ride-modal-box{
+background:white;
+padding:25px;
+border-radius:10px;
+width:350px;
+}
+
+.Admin-ride-modal-box h3{
+margin-bottom:15px;
+}
+
+.Admin-ride-form-group{
+margin-bottom:15px;
+display:flex;
+flex-direction:column;
+}
+
+.Admin-ride-form-group label{
+margin-bottom:5px;
+font-size:14px;
+}
+
+.Admin-ride-form-group input,
+.Admin-ride-form-group select{
+padding:8px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.Admin-ride-modal-buttons{
+display:flex;
+justify-content:flex-start;
+gap:10px;
+margin-top:15px;
+}
+
+
+.Admin-ride-save-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.Admin-ride-cancel-btn{
+background:#e5e7eb;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.Admin-ride-cancel-btn:hover{
+  background-color: #b71c1c;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
+
+/* TABLET VIEW */
+@media (max-width: 1024px) {
+
+  .Admin-ride-search-box{
+    width:250px;
+  }
+
+  .Admin-ride-page-title{
+    font-size:20px;
+  }
+
+  .Admin-ride-action-bar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .Admin-ride-right-buttons{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .Admin-ride-room-search{
+    flex:1;
+  }
+
+}
+
+
+/* MOBILE VIEW */
+@media (max-width: 768px) {
+
+  .Admin-ride-guest-container{
+    padding:15px;
+  }
+
+  /* top bar */
+  .Admin-ride-top-bar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .Admin-ride-search-box{
+    width:100%;
+  }
+
+  /* action bar */
+  .Admin-ride-action-bar{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .Admin-ride-right-buttons{
+    width:100%;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .Admin-ride-room-search{
+    width:100%;
+  }
+
+  .Admin-ride-filter-btn{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* table scroll */
+  .Admin-ride-table-wrapper{
+    overflow-x:auto;
+  }
+
+  .Admin-ride-table-wrapper table{
+    min-width:700px;
+  }
+
+  .Admin-ride-table-wrapper th, td{
+    padding:10px;
+    font-size:13px;
+  }
+
+}
+
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+
+  .Admin-ride-page-title{
+    font-size:18px;
+  }
+
+  .Admin-ride-checkin-btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .Admin-ride-modal-box{
+    width:90%;
+    padding:20px;
+  }
+
+  .Admin-ride-form-group input,
+  .Admin-ride-form-group select{
+    font-size:14px;
+  }
+
+  .Admin-ride-save-btn,
+  .Admin-ride-cancel-btn{
+    width:100%;
+  }
+
+  .Admin-ride-modal-buttons{
+    flex-direction:column;
+  }
+
+}
+
+/* Table thumbnail image */
+.Admin-ride-img-thumb {
+  width: 90px;              /* slightly bigger thumbnail */
+  height: 60px;             /* maintain table row alignment */
+  object-fit: cover;        /* cover the area without stretching */
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;           /* center inside table cell */
+  border: 1px solid #ccc;   /* subtle border */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Admin-ride-img-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Image preview modal overlay */
+.image-preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* Image preview box */
+.image-preview-box {
+  max-width: 90%;
+  max-height: 90%;
+  cursor: default;
+}
+
+.image-preview-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Optional: align 'No Image' text nicely */
+.Admin-ride-table-wrapper td {
+  vertical-align: middle;
+  text-align: center;
+}

@@ -1,0 +1,93 @@
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.profile-modal-panel {
+  background: #fff;
+  width: 360px;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.profile-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.profile-modal-close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  color: #666;
+}
+
+.profile-modal-section {
+  padding: 14px 0;
+}
+
+.profile-modal-section h4 {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.profile-modal-phone {
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.profile-modal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.profile-modal-item:hover {
+  color: #1a92c2;
+}
+
+.profile-modal-ticket-link {
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.profile-modal-ticket-link:hover {
+  text-decoration: underline;
+}
+
+.profile-modal-logout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-modal-logout:hover {
+  color: #e53935;
+}
+
+.profile-modal-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+}

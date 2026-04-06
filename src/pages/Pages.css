@@ -1,0 +1,1828 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@400;500;600&display=swap");
+
+/* =======================
+   COMMON PAGE WRAPPER
+   ======================= */
+
+.page-wrapper {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: "Outfit", sans-serif;
+  color: #2b2b2b;
+}
+
+.page-wrapper h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.page-wrapper p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* =======================
+   CONTACT FORM
+   ======================= */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* NEW: card background */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(244, 249, 252, 0.96)
+  );
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+
+  /* NEW: entrance animation */
+  animation: contactFormFadeUp 0.8s ease both;
+
+  /* smooth hover */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover lift */
+.contact-form:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.18);
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* NEW: focus glow */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #bfa528;
+  box-shadow: 0 0 0 3px rgba(191, 165, 40, 0.18);
+}
+
+.contact-form button {
+  width: 150px;
+  padding: 10px;
+  background-color: #c7d7de;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #bfa528;
+  transform: translateY(-2px);
+}
+
+/* =======================
+   CONTACT FORM ANIMATION
+   ======================= */
+
+@keyframes contactFormFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* =======================
+   GALLERY PAGE
+   ======================= */
+
+.gallery-wrapper {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 60px 20px;
+  font-family: "Outfit", sans-serif;
+  animation: fadeIn 0.6s ease;
+}
+
+.gallery-wrapper h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2b2b2b;
+}
+
+/* Tabs */
+.gallery-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.gallery-tabs a {
+  position: relative;
+  padding-bottom: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #2b2b2b;
+}
+
+.gallery-tabs a:hover,
+.gallery-tabs a.active {
+  color: #d4bc2b;
+}
+
+.gallery-tabs a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: #d4bc2b;
+}
+
+/* Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.gallery-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.gallery-card img:hover {
+  transform: scale(1.08);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================
+   FOOTER
+   ======================= */
+/* 
+.site-footer {
+  background: linear-gradient(135deg, #d9e7f0, #1a92c2);
+  padding: 50px 30px 20px;
+  margin-top: 80px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-content h4 {
+  color: #0673ae;
+  margin-bottom: 10px;
+}
+
+.footer-content p,
+.footer-content li {
+  font-size: 14px;
+  color: #455a64;
+  list-style: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #607d8b;
+} */
+
+/* =======================
+   RESORT PAGE
+   ======================= */
+
+.resort-page {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  font-family: "Outfit", sans-serif;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Title full width */
+.resort-page h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.resort-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  animation: cardPop 0.6s ease;
+}
+
+/* Hover */
+.resort-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Card heading */
+.resort-card h2 {
+  font-size: 20px;
+  color: #1a92c2;
+  margin-bottom: 14px;
+  border-bottom: 2px solid #eef6fb;
+  padding-bottom: 6px;
+}
+
+/* Rows */
+.resort-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.resort-label {
+  min-width: 110px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
+.resort-value {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #2b2b2b;
+}
+
+/* Images (NO page scrollbar issue) */
+.resort-images {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.resort-images img {
+  width: 80px; /* reduced width */
+  height: 64px; /* reduced height */
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.resort-images img:hover {
+  transform: scale(1.08);
+}
+
+/* Hide horizontal scrollbar visually */
+.resort-images::-webkit-scrollbar {
+  height: 5px;
+}
+
+.resort-images::-webkit-scrollbar-thumb {
+  background: #d4bc2b;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .resort-page {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .resort-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Light border card style */
+.light-card{
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.light-card:hover{
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* PAGE */
+.resort-page {
+  padding: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* CARD */
+.resort-card {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.resort-card:hover {
+  transform: translateY(-6px);
+}
+
+.resort-images {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.resort-images img {
+  width: 110px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* VIEW BUTTON */
+.view-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: #1a92c2;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* MODAL */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.image-modal:target {
+  display: flex;
+}
+
+/* CLOSE */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: white;
+  text-decoration: none;
+}
+
+/* SLIDER */
+.slider {
+  width: 70%;
+  max-width: 700px;
+  display: flex;
+  overflow: hidden;
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+  animation: slide 9s infinite;
+  border-radius: 12px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* REMOVE BOTTOM SCROLL */
+body {
+  overflow-x: hidden;
+}
+/* Hide scrollbar visually but keep scroll */
+.resort-images {
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #cfd8dc transparent; /* Firefox */
+}
+
+/* Chrome / Edge / Safari */
+.resort-images::-webkit-scrollbar {
+  height: 6px;
+}
+
+.resort-images::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.resort-images::-webkit-scrollbar-thumb {
+  background-color: #cfd8dc; /* neutral grey */
+  border-radius: 6px;
+}
+
+/* Optional: on hover slightly darker */
+.resort-images::-webkit-scrollbar-thumb:hover {
+  background-color: #b0bec5;
+}
+/* Book button */
+.stay-btn {
+  background: #e31b23;
+  color: #fff;
+  border: none;
+}
+
+/* Keep card height consistent */
+.resort-card {
+  display: flex;
+  flex-direction: column;
+}
+/* FAQ PAGE FONTS */
+.page-wrapper h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+.page-wrapper h3,
+.page-wrapper p {
+  font-family: "Outfit", sans-serif;
+}
+/* ===============================
+   BUTTON ALIGNMENT – ADDITIVE
+   =============================== */
+
+/* Ensure cards behave consistently */
+.resort-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push buttons to bottom */
+.resort-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+/* Same width & height buttons */
+.resort-actions .view-btn,
+.resort-actions .stay-btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Keep existing colors */
+.resort-actions .view-btn {
+  background: #1a92c2;
+  color: #fff;
+  text-decoration: none;
+}
+
+.resort-actions .stay-btn {
+  background: #e31b23;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover (soft, no JS) */
+.resort-actions .view-btn:hover {
+  background: #157aa3;
+}
+
+.resort-actions .stay-btn:hover {
+  background: #e63b3b;
+}
+/* ===============================
+   REDUCE BUTTON WIDTH (SAFE)
+   =============================== */
+
+.resort-actions {
+  justify-content: center; /* centers buttons */
+}
+
+.resort-actions .view-btn,
+.resort-actions .stay-btn {
+  flex: unset; /* stop full stretch */
+  width: 120px; /* 🔽 reduced width */
+  padding: 9px 0;
+}
+/* ===============================
+   REDUCE WIDTH OF BOTH BUTTONS
+   =============================== */
+
+.resort-actions {
+  justify-content: center; /* keep them centered */
+}
+
+.resort-actions .view-btn,
+.resort-actions .stay-btn {
+  flex: unset; /* remove full stretch */
+  width: 95px; /* 🔽 reduced width */
+  padding: 8px 10px;
+}
+/* ===============================
+   FIX BUTTONS TO CARD BOTTOM
+   =============================== */
+
+/* Make card a positioning container */
+.resort-card {
+  position: relative;
+  padding-bottom: 60px; /* space for buttons */
+}
+
+/* Button container fixed at bottom */
+.resort-actions {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between; /* left & right */
+  align-items: center;
+}
+
+/* Button size (reduced width) */
+.resort-actions .view-btn,
+.resort-actions .stay-btn {
+  width: 100px; /* adjust if needed */
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 22px;
+}
+
+/* View button (left) */
+.resort-actions .view-btn {
+  background: #1a92c2;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Book button (right) */
+.resort-actions .stay-btn {
+  background: #e31b23;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+/* =========================
+   RESORT BOOKING PAGE
+   ========================= */
+
+.booking-page {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  font-family: "Outfit", sans-serif;
+}
+
+/* TOP CARD */
+.booking-title-card {
+  background: #ffffff;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 50px;
+}
+
+.booking-title-card h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+.booking-title-card .price {
+  font-size: 18px;
+  color: #b0895a;
+  font-weight: 600;
+}
+
+/* LAYOUT */
+.booking-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+/* LEFT */
+.booking-left h2 {
+  font-family: "Playfair Display", serif;
+  margin: 30px 0 16px;
+}
+
+.booking-desc {
+  line-height: 1.8;
+  color: #444;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  font-size: 14px;
+}
+
+.booking-images {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.booking-images img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* RIGHT FORM */
+.booking-form-card {
+  background: #f4f4f4;
+  padding: 26px;
+  border-radius: 12px;
+}
+
+.booking-form-card h3 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+
+.booking-form-card input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.book-room-btn {
+  width: 100%;
+  padding: 12px;
+  background: #b0895a;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.stay-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: #0b7dda;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.red-btn {
+  background: #e31b23 !important; /* red color */
+  color: #fff !important;
+}
+.booking-form-card select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #fff;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-label {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+.amenities-section {
+  margin-top: 80px;
+  padding: 60px 20px;
+  background: #fafafa;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #1f2b4f;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.amenity-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.amenity-card h3 {
+  margin-bottom: 12px;
+  color: #1f2b4f;
+  font-size: 18px;
+}
+
+.amenity-card ul {
+  padding-left: 18px;
+}
+
+.amenity-card li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #444;
+}
+
+.amenity-card small {
+  font-size: 12px;
+  color: #777;
+}
+/* ===============================
+   AMENITIES FONTS (PLAYFAIR + OUTFIT)
+   =============================== */
+
+/* Section title */
+.amenities-section .section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Card headings */
+.amenity-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Sub content */
+.amenity-card ul,
+.amenity-card li,
+.amenity-card small {
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+}
+/* =====================================
+   AMENITIES – MATCH ROOM AMENITIES LOOK
+   ===================================== */
+
+.amenities-section {
+  background: #ffffff;
+  padding: 80px 20px;
+}
+
+/* Section title */
+.amenities-section .section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f2b4f;
+  margin-bottom: 50px;
+}
+
+/* Grid like Room Amenities */
+.amenities-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 50px;
+}
+
+/* Card becomes flat (like list block) */
+.amenity-card {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+  transition: transform 0.35s ease;
+}
+
+/* Hover lift (requested earlier) */
+.amenity-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Card heading */
+.amenity-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2b4f;
+}
+
+/* List styling */
+.amenity-card ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 14px;
+}
+
+/* List item = room amenities row style */
+.amenity-card li {
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.7;
+  padding-left: 28px;
+  position: relative;
+}
+
+/* Bullet icon (matches image style) */
+.amenity-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #b0895a;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Small text */
+.amenity-card small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =====================================
+   AMENITIES & FACILITIES – FINAL CLEAN
+   ===================================== */
+
+.amenities-section {
+  background: #ffffff;
+  padding: 90px 20px;
+}
+
+/* Main title */
+.amenities-section .section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2b4f;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Grid layout */
+.amenities-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 60px;
+}
+
+/* Flat luxury block (not card) */
+.amenity-card {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  transition: transform 0.35s ease;
+}
+
+/* Hover lift */
+.amenity-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Category heading */
+.amenity-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1f2b4f;
+  margin-bottom: 18px;
+}
+
+/* List */
+.amenity-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List items */
+.amenity-card li {
+  font-family: "Outfit", sans-serif;
+  font-size: 14.5px;
+  color: #444;
+  line-height: 1.8;
+  padding-left: 26px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+/* Bullet style like room amenities */
+.amenity-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 20px;
+  color: #b0895a;
+}
+
+/* Sub text */
+.amenity-card small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .amenities-section .section-title {
+    font-size: 28px;
+  }
+}
+/* ==============================
+   AMENITIES – 4 CARD LAYOUT
+   ============================== */
+
+.amenities-section {
+  background: #ffffff;
+  padding: 90px 20px;
+}
+
+/* Section title */
+.amenities-section .section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2b4f;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* 4 cards in one row */
+.amenities-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Card style */
+.amenity-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 28px 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+}
+
+/* Hover uplift */
+.amenity-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Card heading */
+.amenity-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #1f2b4f;
+  margin-bottom: 16px;
+}
+
+/* List reset */
+.amenity-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List items */
+.amenity-card li {
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.8;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* Bullet style */
+.amenity-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  font-size: 20px;
+  color: #b0895a;
+}
+
+/* Sub text */
+.amenity-card small {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+
+@media (max-width: 1024px) {
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amenities-section .section-title {
+    font-size: 26px;
+  }
+}
+.amenity-book-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-weight: 600;
+  color: #d32f2f;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.amenity-book-link:hover {
+  color: #000;
+  transform: translateX(4px);
+}
+/* =========================
+   AUDITORIUM BOOKING FONTS
+   ========================= */
+
+/* Main page title */
+.booking-title-card h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+/* Subtitle under title */
+.booking-title-card p {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  color: #555;
+}
+
+/* Section headings (Hall Features, Book Auditorium) */
+.booking-left h2,
+.booking-form-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Feature list */
+.auditorium-features li {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Inputs & select */
+.input-field,
+.booking-form-card input,
+.booking-form-card select {
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+}
+
+/* Button text */
+.book-room-btn {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.booking-left h2::after,
+.booking-form-card h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #b0895a;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+/* SUCCESS MODAL */
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.success-modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 360px;
+  animation: pop 0.4s ease;
+}
+
+.success-modal h3 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 10px;
+}
+
+.success-modal p {
+  font-family: "Outfit", sans-serif;
+  margin-bottom: 18px;
+}
+
+.success-modal button {
+  background: #1a92c2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.error-text {
+  color: red;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.price-box {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #b0895a;
+}
+.booking-form-card.wide {
+  max-width: 850px;
+  margin: 40px auto;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.section-subtitle {
+  margin-top: 30px;
+  font-family: "Playfair Display", serif;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.input-field.small {
+  padding: 8px;
+}
+
+.add-item-btn {
+  margin-top: 10px;
+  background: #eee;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.price-summary {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 8px;
+  font-family: "Outfit", sans-serif;
+}
+
+.price-summary .payable {
+  font-weight: 600;
+  color: #b0895a;
+  margin-top: 6px;
+}
+.booking-page {
+  padding: 40px 20px;
+}
+
+.booking-title-card {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.booking-title-card h1 {
+  font-family: "Playfair Display", serif;
+}
+
+.subheading {
+  font-family: "Outfit", sans-serif;
+  color: #777;
+}
+
+.booking-form-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.booking-form-card.wide {
+  max-width: 850px;
+  margin: auto;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.section-subtitle {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-family: "Playfair Display", serif;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input-field.small {
+  padding: 8px;
+}
+
+.add-item-btn {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.price-summary {
+  margin-top: 20px;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 10px;
+}
+
+.price-summary .payable {
+  font-weight: 600;
+  color: #b0895a;
+  margin-top: 6px;
+}
+
+/* =====================================
+   GLOBAL TYPOGRAPHY SYSTEM (MINIMAL)
+   ===================================== */
+
+/* Body & default text */
+
+body {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #2b2b2b;
+}
+
+/* Main headings */
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Section headings */
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Card / subsection titles */
+h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Small headings */
+h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Paragraphs & labels
+p,
+label,
+li,
+span,
+input,
+select,
+textarea,
+button {
+  font-family: "Outfit", sans-serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+} */
+
+/* Subheadings / muted text */
+.subheading,
+small {
+  font-family: "Outfit", sans-serif;
+  font-size: 13.5px;
+  color: #666;
+}
+/* ================= PAGE ================= */
+.resort-suite-page {
+  padding: 130px 8%;
+  background: #f8fafc;
+}
+
+.suite-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+  color: #1e293b;
+}
+
+/* ================= SECTION ================= */
+.suite-section {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+
+.suite-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.suite-image img {
+  width: 420px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.suite-content {
+  flex: 1;
+}
+
+.suite-content h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #0f172a;
+}
+
+.suite-content p {
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* ================= FEATURES ================= */
+.suite-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.suite-features span {
+  background: #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+/* ================= PRICE ================= */
+.suite-price p {
+  margin: 5px 0;
+  color: #1e293b;
+}
+
+/* ================= BUTTONS ================= */
+/* ================= BUTTONS ================= */
+.suite-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* COMMON BASE STYLE */
+.view-btn,
+.book-btn {
+  padding: 10px 24px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+}
+
+/* VIEW BUTTON */
+.view-btn {
+  border: 2px solid #ef4444;
+  background: white;
+  color: #ef4444;
+  width: 120px;
+}
+
+.view-btn:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* BOOK BUTTON */
+.book-btn {
+  border: 2px solid #ef4444;   /* add same border for equal height */
+  background: #ef4444;
+  color: white;
+  text-decoration: none;
+  width: 120px;
+}
+
+.book-btn:hover {
+  background: #dc2626;
+}
+
+/* ================= GALLERY ================= */
+.room-gallery {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.room-gallery img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 90%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: red;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.modal-images {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.modal-images img {
+  width: 30%;
+  border-radius: 8px;
+} 
+
+/* Modal header and grid for Resort images */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modal-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-images-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f1f5f9;
+}
+
+.modal-empty {
+  padding: 24px;
+  text-align: center;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .modal-images-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .modal-images-grid img {
+    height: 180px;
+  }
+}
+
+/* ================= RESPONSIVE: RESORT SUITE ================= */
+@media (max-width: 1024px) {
+  .resort-suite-page {
+    padding: 110px 6%;
+  }
+  .suite-section {
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .suite-image img {
+    width: 360px;
+  }
+  .suite-content h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resort-suite-page {
+    padding: 100px 20px;
+  }
+  .suite-title {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  .suite-section {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .suite-section.reverse {
+    flex-direction: column;
+  }
+  .suite-image img {
+    width: 100%;
+    max-width: 520px;
+  }
+  .suite-features {
+    justify-content: center;
+  }
+  .suite-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .view-btn,
+  .book-btn {
+    width: 140px;
+  }
+  .modal-content {
+    width: 92%;
+    max-width: 680px;
+  }
+  .modal-images img {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .resort-suite-page {
+    padding: 90px 16px;
+  }
+  .suite-title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+  .suite-features span {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  .view-btn,
+  .book-btn {
+    width: 100%;
+  }
+  .modal-content {
+    width: 94%;
+  }
+  .modal-images img {
+    width: 100%;
+  }
+}

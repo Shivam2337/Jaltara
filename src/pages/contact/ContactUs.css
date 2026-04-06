@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@400;500;600&display=swap");
+
+.contact-page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 60px;
+  font-family: "Outfit", sans-serif;
+  color: #2b2b2b;
+}
+
+.contact-title {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(244, 249, 252, 0.96)
+  );
+
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+
+  animation: contactFadeUp 0.8s ease both;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.18);
+}
+
+.contact-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #bfa528;
+  box-shadow: 0 0 0 3px rgba(191, 165, 40, 0.18);
+}
+
+.contact-btn {
+  width: 160px;
+  padding: 10px;
+  background-color: #c7d7de;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #bfa528;
+  transform: translateY(-2px);
+}
+
+@keyframes contactFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 1200px) {
+  .contact-page {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-page {
+    padding: 40px;
+  }
+
+  .contact-title {
+    font-size: 30px;
+  }
+
+  .contact-form {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-page {
+    padding: 30px;
+  }
+
+  .contact-title {
+    font-size: 26px;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 550px) {
+  .contact-page {
+    padding: 20px;
+  }
+
+  .contact-title {
+    font-size: 24px;
+  }
+
+  .contact-form {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .contact-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-page {
+    padding: 10px;
+  }
+
+  .contact-title {
+    font-size: 24px;
+  }
+  .div .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-page {
+    padding: 5px;
+  }
+}

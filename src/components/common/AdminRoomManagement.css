@@ -1,0 +1,60 @@
+.room-mgmt-container {
+  padding: 24px;
+}
+
+.room-mgmt-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24px;
+  font-family: "Outfit";
+}
+
+/* TABS ROW */
+.room-mgmt-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0;
+}
+
+.room-mgmt-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: none;
+  background: none;
+  font-family: "Outfit";
+  font-size: 15px;
+  color: #888;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.room-mgmt-tab:hover {
+  color: #339af0;
+  background: #f0f8ff;
+}
+
+.room-mgmt-tab.active {
+  color: #339af0;
+  border-bottom: 2px solid #339af0;
+  font-weight: 600;
+  background: #f0f8ff;
+}
+
+.tab-icon {
+  font-size: 14px;
+}
+
+/* CONTENT AREA */
+.room-mgmt-content {
+  background: white;
+  border-radius: 0 12px 12px 12px;
+  min-height: 400px;
+}

@@ -1,0 +1,47 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@400;500;600&display=swap");
+
+.aboutPage-wrapper {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 60px;
+  font-family: "Outfit", sans-serif;
+  color: #2b2b2b;
+}
+
+.aboutPage-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.aboutPage-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutPage-text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+} */
+
+/* STORY */
+
+.about-page {
+  padding-top: 128px;
+  color: #333;
+}
+
+.about-page-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+/* ////////////////////////////////////// */
+@media (max-width: 480px) {
+  .about-page {
+    padding-top: 100px;
+  }
+}

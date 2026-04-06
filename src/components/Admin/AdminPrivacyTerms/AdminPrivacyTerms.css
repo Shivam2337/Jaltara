@@ -1,0 +1,290 @@
+.Admin-pt-container {
+  padding: 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+  transition: all 0.2s;
+}
+.admin-pt-section-devider {
+  margin-bottom: 80px;
+  border-top: 1px solid #ccc;
+}
+
+.admin-pt-heading-box {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+.admin-pt-heading {
+  font-size: 22px;
+  font-family: "Playfair Display";
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.admin-terms-div {
+  margin-bottom: 80px;
+}
+
+.admin-terms-title {
+  font-size: 24px;
+  margin-bottom: 32px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.admin-terms-title-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 40px;
+}
+.admin-terms-title-box-group {
+  display: flex;
+  flex-direction: column;
+}
+.admin-terms-title-box-label {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.admin-terms-title-box-input {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  min-width: max-content;
+
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+.admin-terms-title-box-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.admin-terms-title-box-textarea {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  min-width: max-content;
+
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  resize: none;
+  overflow: hidden;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.admin-terms-title-box-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.admin-terms-points-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-terms-points-title {
+}
+
+.admin-terms-point-box {
+  display: grid;
+  grid-template-columns: 50px 200px 5fr 1fr;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.admin-terms-point-box-bullet {
+  font-size: 16px;
+  text-align: center;
+  padding: 8px;
+}
+
+.admin-terms-point-box-input {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  height: max-content;
+  width: 200px;
+
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+
+.admin-terms-point-box-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.admin-terms-point-box-textarea {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  min-width: max-content;
+
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  resize: none;
+  overflow: hidden;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.admin-terms-point-box-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.admin-terms-point-remove-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-terms-point-remove-btn {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #ff5959;
+  color: #fff;
+}
+
+.admin-terms-point-remove-btn-confirm {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #ff5959;
+  color: #fff;
+}
+
+.admin-terms-point-remove-btn-cancel {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #cdcdcd;
+  /* color: #fff; */
+}
+
+.admin-terms-point-add-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  margin-bottom: 32px;
+}
+
+.admin-terms-point-add-box-point {
+  display: grid;
+  grid-template-columns: 50px 200px 5fr 1fr;
+
+  gap: 20px;
+}
+
+.admin-terms-point-add-box-point p {
+  text-transform: capitalize;
+  color: #007bff;
+  padding: 8px;
+}
+
+.admin-terms-point-add-box-point-input {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  height: max-content;
+  width: 200px;
+
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+.admin-terms-point-add-box-point-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.admin-terms-point-add-box-point-textarea {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  min-width: max-content;
+
+  border: 1px solid #ccc;
+  transition: all 0.2s;
+  resize: none;
+  overflow: hidden;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.admin-terms-point-add-box-point-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.admin-terms-point-add-btn-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.admin-terms-point-add-box-point-confirmAdd {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+
+  color: #fff;
+}
+
+.admin-terms-point-add-box-point-cancelAdd {
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #cdcdcd;
+  /* color: #fff; */
+}
+
+.admin-terms-point-add-box-point-Add {
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  width: max-content;
+  margin-left: auto;
+
+  margin-right: 50px;
+}
+
+.admin-terms-save-btn {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  width: max-content;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+}
+.admin-terms-save-btn:disabled {
+  opacity: 0.7;
+}

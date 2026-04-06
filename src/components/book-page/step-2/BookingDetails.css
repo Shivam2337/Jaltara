@@ -1,0 +1,199 @@
+.booking-s2-details-card {
+  background: white;
+  border-radius: 10px;
+  padding: 28px 24px;
+  box-shadow: 0 0px 2px 2px rgba(0, 0, 0, 0.06);
+}
+
+.booking-s2-details-title {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.booking-s2-details-field {
+  margin-bottom: 16px;
+}
+
+.booking-s2-details-label {
+  font-size: 16px;
+  color: #555;
+
+  display: block;
+  margin-bottom: 8px;
+}
+
+.booking-s2-details-dropdown {
+}
+.booking-s2-dropdown {
+  position: relative;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.booking-s2-dropdown-selected {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 8px 8px 8px 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+
+  background-color: #f6f6f6;
+}
+
+.booking-s2-dropdown:hover {
+  outline: none;
+
+  box-shadow: 0px 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.booking-s2-dropdown-menu {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  margin-top: 6px;
+  overflow: hidden;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all 0.2s ease;
+
+  border: 1px solid rgb(236, 236, 236);
+  z-index: 50; /* add this */
+}
+
+.booking-s2-dropdown:hover .booking-s2-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.booking-s2-dropdown-item {
+  padding: 10px 14px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.booking-s2-check {
+  font-size: 20px;
+  color: rgb(0, 199, 0);
+}
+
+.booking-s2-dropdown-item:hover {
+  background: #f3f3f3;
+}
+/* .booking-s2-dropdown-item.active {
+  background: #f3f3f3;
+  font-weight: 500;
+} */
+
+.booking-s2-coupon-row {
+  display: flex;
+  gap: 20px;
+}
+
+.booking-s2-details-input {
+  width: 100%;
+  padding: 8px 8px 8px 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+
+  background-color: #f6f6f6;
+  transition: all 0.2s;
+}
+
+.booking-s2-details-input:focus {
+  outline: none;
+
+  box-shadow: 0px 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.booking-s2-coupon-btn {
+  border-radius: 5px;
+
+  border: none;
+  background: #15803d;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.booking-s2-devider {
+  border: none;
+  border-top: 1px solid #eee;
+
+  margin-bottom: 16px;
+}
+
+.booking-s2-details-prise-row {
+  /* margin-bottom: 10px; */
+
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+
+  color: #555;
+}
+.booking-s2-details-prise-row-text {
+  margin-bottom: 12px;
+}
+.booking-s2-details-prise-value {
+}
+
+.booking-s2-details-prise-row-total {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.booking-s2-details-prise-row-total div {
+  display: flex;
+  width: 100%;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+
+  justify-content: space-between;
+}
+.booking-s2-details-prise-row-total-text {
+}
+.booking-s2-details-prise-total-value {
+}
+.booking-s2-details-payable {
+}
+
+.booking-s2-details-btn-div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-s2-details-book {
+  padding: 10px 28px;
+  border-radius: 8px;
+  border: none;
+  background: #15803d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.booking-s2-details-cancel {
+  padding: 10px 28px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+
+  background: white;
+  cursor: pointer;
+}

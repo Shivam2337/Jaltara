@@ -1,0 +1,209 @@
+.ride-timing-page {
+  width: 100%;
+}
+
+.ride-timing-wrapper {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 80px;
+  font-family: "Segoe UI", sans-serif;
+  animation: fadeIn 0.6s ease;
+}
+
+.ride-timing-card {
+  background: #ffffff;
+  color: #222;
+  padding: 35px 30px;
+  border-radius: 18px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Gradient Top Border */
+.ride-timing-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #1a92c2, #00c6ff);
+}
+
+/* Hover Effect */
+.ride-timing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
+}
+
+/* Heading */
+.ride-timing-card h1 {
+  font-size: 32px;
+  color: #1a92c2;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.ride-timing-box {
+  background: #f4faff;
+  padding: 14px;
+  border-radius: 12px;
+  margin: 12px auto;
+  max-width: 380px;
+  border: 1px solid #d6efff;
+  transition: background 0.3s ease;
+}
+
+.ride-timing-box:hover {
+  background: #e9f6ff;
+}
+
+.ride-timing-box p {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.ride-timing-box span {
+  font-size: 16px;
+  display: block;
+  margin-top: 6px;
+  color: #555;
+}
+
+.ride-timing-notes {
+  margin-top: 50px;
+  background: #f9fbff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.ride-timing-notes h2 {
+  color: #004aad;
+  margin-bottom: 14px;
+  font-size: 26px;
+}
+
+.ride-timing-notes ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ride-timing-notes li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  font-size: 16px;
+}
+
+.ride-timing-notes li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 1200px) {
+  .ride-timing-wrapper {
+    padding: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ride-timing-wrapper {
+    padding: 50px 40px;
+  }
+
+  .ride-timing-card h1 {
+    font-size: 28px;
+  }
+
+  .ride-timing-box p {
+    font-size: 17px;
+  }
+
+  .ride-timing-box span {
+    font-size: 14px;
+  }
+
+  .ride-timing-notes h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .ride-timing-wrapper {
+    padding: 40px 25px;
+  }
+
+  .ride-timing-card {
+    padding: 28px 22px;
+  }
+
+  .ride-timing-box {
+    max-width: 100%;
+  }
+
+  .ride-timing-notes {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 550px) {
+  .ride-timing-wrapper {
+    padding: 30px 18px;
+  }
+
+  .ride-timing-card h1 {
+    font-size: 24px;
+  }
+
+  .ride-timing-box p {
+    font-size: 16px;
+  }
+
+  .ride-timing-box span {
+    font-size: 14px;
+  }
+
+  .ride-timing-notes h2 {
+    font-size: 22px;
+  }
+
+  .ride-timing-notes li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ride-timing-wrapper {
+    padding: 25px 12px;
+  }
+
+  .ride-timing-card {
+    padding: 22px 16px;
+  }
+
+  .ride-timing-card h1 {
+    font-size: 22px;
+  }
+
+  .ride-timing-box {
+    padding: 12px;
+  }
+
+  .ride-timing-notes {
+    padding: 20px;
+  }
+
+  .ride-timing-notes h2 {
+    font-size: 20px;
+  }
+
+  .ride-timing-notes li {
+    font-size: 12px;
+  }
+}

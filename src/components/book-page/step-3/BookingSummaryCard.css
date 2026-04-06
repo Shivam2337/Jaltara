@@ -1,0 +1,140 @@
+.booking-s3-container {
+  display: flex;
+  justify-content: center;
+}
+
+.booking-s3-center{
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.booking-s3-summary-card {
+  width: 560px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0px 2px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+@media (max-width: 720px){
+  .booking-s3-summary-card{ width: 100%; }
+  .booking-s3-center{ padding: 0 14px; }
+}
+
+.booking-s3-summary-header {
+  display: flex;
+
+  padding: 28px 24px;
+
+  gap: 20px;
+}
+.booking-s3-summary-header-img-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.booking-s3-summary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.booking-s3-summary-title {
+  font-size: 22px;
+
+  font-family: "Playfair Display";
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.booking-s3-summary-sub {
+  font-size: 16px;
+  color: #777;
+}
+
+.booking-s3-seperator {
+  border: none;
+  border-top: 1px solid #d8d8d8;
+
+  margin-bottom: 18px;
+}
+
+.booking-s3-summary-data-section {
+  padding: 0 24px;
+  margin-bottom: 30px;
+}
+
+.booking-s3-summary-data-label {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 8px;
+}
+.booking-s3-summary-data-value {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.booking-s3-line-items{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.booking-s3-line{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.booking-s3-line-left{ display: inline-flex; gap: 8px; align-items: center; }
+.booking-s3-line-name{ color: #111827; }
+.booking-s3-line-qty{ color: #6b7280; }
+.booking-s3-line-amt{ font-weight: 600; }
+
+.booking-s3-summary-price-section {
+  padding: 0 24px;
+  margin-bottom: 16px;
+}
+
+.booking-s3-summary-price-label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.booking-s3-summary-price-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.booking-s3-summary-total-div {
+  font-size: 18px;
+  font-weight: 500;
+}
+.booking-s3-summary-btn-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 24px 24px 24px;
+}
+
+.booking-s3-summary-btn-pay {
+  width: 100%;
+  background: #0a7d36;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.booking-s3-summary-btn-cancel {
+  width: 100%;
+  font-size: 16px;
+
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  background: white;
+}

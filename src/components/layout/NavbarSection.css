@@ -1,0 +1,404 @@
+.navbar-section-k {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 40px;
+  background: transparent;
+  isolation: isolate;
+
+  transition: all 0.2s;
+}
+.navbar-section-k-bg-white {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar-section-k-bg-white-logo {
+  color: #333;
+}
+.navbar-section-k.navbar-section-k-scrolled {
+  background: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-section-k-left {
+  background: transparent;
+}
+
+.navbar-section-k-img-logo {
+  height: 50px;
+}
+
+.navbar-section-k-logo {
+  font-size: 40px;
+  color: white;
+  /* mix-blend-mode: difference; */
+  font-family: "Playfair display";
+}
+
+.navbar-section-k-logo.navbar-section-k-scrolled {
+  color: #333;
+}
+.navbar-section-k-logo.navbar-section-k-bg-white-logo {
+  color: #333;
+}
+
+.navbar-section-k-center {
+  padding: 5px 5px;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+
+.navbar-section-k-center {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-section-k-center-rest {
+  display: flex;
+  /* overflow: hidden; */
+  /* gap: 28px; */
+}
+.navbar-section-k-center-gray-bg {
+  background-color: #f9f9f9;
+}
+.navbar-section-k.navbar-section-k-scrolled .navbar-section-k-center {
+  background-color: #f9f9f9;
+}
+/*
+.navbar-section-k-center {
+  padding: 5px 10px;
+  display: flex;
+ 
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+ 
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+} */
+
+.navbar-section-k-li {
+  list-style: none;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.navbar-section-k-link {
+  font-family: "outfit";
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 30px;
+
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+.navbar-section-k-link.active {
+  background-color: white;
+  color: #333;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-section-k-login-btn {
+  background-color: white;
+  text-transform: capitalize;
+  border: none;
+  padding: 12px 24px;
+  font-family: "Outfit";
+
+  font-size: 18px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+
+  border-radius: 30px;
+}
+.navbar-section-k-login-btn-blue {
+  background-color: #339af0;
+  color: white;
+}
+
+.navbar-section-k.navbar-section-k-scrolled .navbar-section-k-login-btn {
+  background-color: #339af0;
+  color: white;
+}
+
+.navbar-section-k-login-btn:hover {
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* ////////////////////////////////////////////// */
+/* dropdown (ppackgos , water park, ) */
+
+.navbar-section-k-li:hover .navbar-section-k-dropdown-menu {
+  opacity: 1;
+}
+
+.navbar-section-k-center:hover {
+  background-color: #f9f9f9;
+}
+
+.navbar-section-k-dropdown-menu {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  transform: translateY(10px);
+
+  top: calc(100%);
+  left: 0;
+
+  min-width: 200px;
+  max-width: max-content;
+
+  border-radius: 0 0 30px 30px;
+
+  list-style: none;
+
+  padding: 20px 20px;
+
+  background-color: #f9f9f9;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.3s;
+}
+
+.navbar-section-k-dropdown-menu-link {
+  font-size: 18px;
+
+  font-family: "outfit";
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 12px;
+
+  transition: all 0.3s;
+}
+
+.navbar-section-k-dropdown-menu-link:hover {
+  letter-spacing: 0.5px;
+  color: #339af0;
+}
+
+.navbar-section-k-li:hover .navbar-section-k-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* ///////////////////////////////////////// */
+.nav-overlay-k {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 3000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-overlay-k-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.nav-overlay-k-menu {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-overlay-k-link {
+  display: block;
+  font-size: 24px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-overlay-k-btn {
+  display: inline-block;
+  background-color: white;
+  border: none;
+  padding: 12px 24px;
+  font-family: "Outfit";
+  font-size: 18px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-bottom: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.nav-overlay-k-btn-primary {
+  background-color: #339af0;
+  color: #fff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+.nav-overlay-k-btn:hover {
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+.nav-overlay-k-btn:focus-visible {
+  outline: 2px solid #339af0;
+  outline-offset: 2px;
+}
+
+.nav-overlay-k-sub-ul {
+  margin-bottom: 30px;
+}
+.nav-overlay-k-heading {
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.nav-overlay-k-sublink {
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+/* .nav-overlay-k-dropdown {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+} */
+
+.navbar-overlay-menu-btn {
+  display: none;
+  color: #fff;
+  font-size: 32px !important;
+}
+
+.navbar-overlay-menu-btn.navbar-section-k-scrolled {
+  color: #333;
+  font-size: 32px !important;
+}
+
+.nav-overlay-k-link:hover {
+  color: #339af0;
+}
+
+.nav-overlay-k-link:focus-visible {
+  outline: 2px solid #339af0;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@media (max-width: 1170px) {
+  .navbar-section-k-center {
+    display: none;
+  }
+  .navbar-section-k-login-btn {
+    display: none;
+  }
+  .navbar-overlay-menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar-section-k {
+    padding: 10px 20px;
+  }
+
+  .navbar-section-k-logo {
+    font-size: 32px;
+  }
+
+  .navbar-section-k-img-logo {
+    height: 45px;
+  }
+}
+
+@media (max-width: 425px) {
+  .nav-overlay-k-link {
+    font-size: 20px;
+  }
+
+  .nav-overlay-k-heading {
+    font-size: 20px;
+  }
+  .nav-overlay-k-sublink {
+    font-size: 18px;
+  }
+}
+
+/* ==============================
+   NAVBAR RIGHT SECTION
+   ============================== */
+.navbar-section-k-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Hide Book button + profile on mobile */
+@media (max-width: 1170px) {
+  .navbar-section-k-login-btn {
+    display: none;
+  }
+  .navbar-profile-icon-wrapper {
+    display: none !important;
+  }
+  .navbar-overlay-menu-btn {
+    display: block;
+  }
+}
+
+/* Profile icon — desktop navbar */
+.navbar-profile-icon-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.navbar-profile-icon-wrapper:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-profile-icon {
+  color: white;
+  transition: opacity 0.2s ease, color 0.3s ease;
+  display: block;
+   font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* When scrolled or not on homepage — icon turns dark */
+.navbar-profile-icon.navbar-section-k-scrolled {
+  color: #333 !important;
+}
+
+.navbar-profile-icon:hover {
+  opacity: 0.7;
+}

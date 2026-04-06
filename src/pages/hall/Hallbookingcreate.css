@@ -1,0 +1,504 @@
+/* ============================================================
+   HallBookingCreate.css
+   Responsive styles for the Hall Booking form component.
+   All class names follow the BEM-style HallBookingCreate__ prefix.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap");
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --hbc-font-body: "DM Sans", sans-serif;
+  --hbc-font-display: "Lora", serif;
+
+  --hbc-color-bg: #f7f6f2;
+  --hbc-color-surface: #ffffff;
+  --hbc-color-surface-alt: #f3f2ee;
+  --hbc-color-border: #e2e0d8;
+  --hbc-color-border-strong: #c8c5bc;
+  --hbc-color-border-error: #d85a30;
+
+  --hbc-color-text-primary: #1c1b18;
+  --hbc-color-text-secondary: #5c5a54;
+  --hbc-color-text-muted: #9a9890;
+  --hbc-color-text-error: #b84220;
+
+  --hbc-color-accent: #1c1b18;
+  --hbc-color-accent-hover: #3a3834;
+  --hbc-color-success-bg: #e6f4ee;
+  --hbc-color-success-text: #0f6e56;
+  --hbc-color-success-border: #9fd8bc;
+  --hbc-color-error-bg: #fdf0eb;
+  --hbc-color-error-border: #f5c4b3;
+
+  --hbc-radius-sm: 6px;
+  --hbc-radius-md: 10px;
+  --hbc-radius-lg: 16px;
+
+  --hbc-shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+  --hbc-transition: 0.18s ease;
+}
+
+/* ── Root wrapper ──────────────────────────────────────────── */
+.HallBookingCreate {
+  font-family: var(--hbc-font-body);
+  background: var(--hbc-color-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 4rem;
+  box-sizing: border-box;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.HallBookingCreate__header {
+  width: 100%;
+  max-width: 580px;
+  margin-bottom: 1.75rem;
+}
+
+.HallBookingCreate__title {
+  font-family: var(--hbc-font-display);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--hbc-color-text-primary);
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.HallBookingCreate__subtitle {
+  font-size: 0.875rem;
+  color: var(--hbc-color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.HallBookingCreate__required-star {
+  color: var(--hbc-color-text-error);
+}
+
+/* ── Form card ─────────────────────────────────────────────── */
+.HallBookingCreate__form {
+  width: 100%;
+  max-width: 580px;
+  background: var(--hbc-color-surface);
+  border: 1px solid var(--hbc-color-border);
+  border-radius: var(--hbc-radius-lg);
+  box-shadow: var(--hbc-shadow-card);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* ── Section ───────────────────────────────────────────────── */
+.HallBookingCreate__section {
+  margin-bottom: 0;
+}
+
+.HallBookingCreate__section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hbc-color-text-muted);
+  margin: 0 0 1.1rem;
+}
+
+.HallBookingCreate__divider {
+  border: none;
+  border-top: 1px solid var(--hbc-color-border);
+  margin: 1.5rem 0;
+}
+
+/* ── Field ─────────────────────────────────────────────────── */
+.HallBookingCreate__field {
+  margin-bottom: 1.1rem;
+}
+
+.HallBookingCreate__field:last-child {
+  margin-bottom: 0;
+}
+
+.HallBookingCreate__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--hbc-color-text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.HallBookingCreate__label-optional {
+  font-weight: 400;
+  color: var(--hbc-color-text-muted);
+  font-size: 0.75rem;
+}
+
+/* ── Inputs ────────────────────────────────────────────────── */
+.HallBookingCreate__input,
+.HallBookingCreate__select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.9rem;
+  font-family: var(--hbc-font-body);
+  color: var(--hbc-color-text-primary);
+  background: var(--hbc-color-surface-alt);
+  border: 1px solid var(--hbc-color-border);
+  border-radius: var(--hbc-radius-sm);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color var(--hbc-transition), box-shadow var(--hbc-transition);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.HallBookingCreate__input::placeholder {
+  color: var(--hbc-color-text-muted);
+}
+
+.HallBookingCreate__input:hover,
+.HallBookingCreate__select:hover {
+  border-color: var(--hbc-color-border-strong);
+}
+
+.HallBookingCreate__input:focus,
+.HallBookingCreate__select:focus {
+  border-color: var(--hbc-color-accent);
+  box-shadow: 0 0 0 3px rgba(28, 27, 24, 0.08);
+  background: var(--hbc-color-surface);
+}
+
+.HallBookingCreate__input--error,
+.HallBookingCreate__input--error:focus {
+  border-color: var(--hbc-color-border-error) !important;
+  box-shadow: 0 0 0 3px rgba(216, 90, 48, 0.1) !important;
+}
+
+.HallBookingCreate__input--coupon {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Select wrapper ────────────────────────────────────────── */
+.HallBookingCreate__select-wrap {
+  position: relative;
+}
+
+.HallBookingCreate__select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--hbc-color-text-secondary);
+  pointer-events: none;
+}
+
+/* ── Two-column row ────────────────────────────────────────── */
+.HallBookingCreate__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+/* ── Coupon row ────────────────────────────────────────────── */
+.HallBookingCreate__coupon-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.HallBookingCreate__coupon-row .HallBookingCreate__input {
+  flex: 1;
+  min-width: 0;
+}
+
+.HallBookingCreate__apply-btn {
+  flex-shrink: 0;
+  padding: 0.55rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: var(--hbc-font-body);
+  color: var(--hbc-color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--hbc-color-border-strong);
+  border-radius: var(--hbc-radius-sm);
+  cursor: pointer;
+  transition: background var(--hbc-transition), color var(--hbc-transition);
+  white-space: nowrap;
+}
+
+.HallBookingCreate__apply-btn:hover {
+  background: var(--hbc-color-surface-alt);
+  color: var(--hbc-color-text-primary);
+}
+
+.HallBookingCreate__apply-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Applied coupon badge ──────────────────────────────────── */
+.HallBookingCreate__coupon-applied {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--hbc-color-success-bg);
+  border: 1px solid var(--hbc-color-success-border);
+  border-radius: var(--hbc-radius-sm);
+  padding: 0.5rem 0.75rem;
+}
+
+.HallBookingCreate__coupon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hbc-color-success-text);
+  flex-shrink: 0;
+}
+
+.HallBookingCreate__coupon-text {
+  font-size: 0.8125rem;
+  color: var(--hbc-color-success-text);
+  flex: 1;
+}
+
+.HallBookingCreate__coupon-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--hbc-color-success-text);
+  padding: 0 0.15rem;
+  opacity: 0.7;
+  transition: opacity var(--hbc-transition);
+}
+
+.HallBookingCreate__coupon-remove:hover {
+  opacity: 1;
+}
+
+/* ── Error message ─────────────────────────────────────────── */
+.HallBookingCreate__error-msg {
+  font-size: 0.75rem;
+  color: var(--hbc-color-text-error);
+  margin: 0.35rem 0 0;
+  line-height: 1.4;
+}
+
+/* ── Pricing summary ───────────────────────────────────────── */
+.HallBookingCreate__summary {
+  margin-top: 1.5rem;
+  background: var(--hbc-color-surface-alt);
+  border: 1px solid var(--hbc-color-border);
+  border-radius: var(--hbc-radius-md);
+  padding: 1rem 1.25rem;
+  animation: hbc-fadeup 0.2s ease;
+}
+
+@keyframes hbc-fadeup {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.HallBookingCreate__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8375rem;
+  color: var(--hbc-color-text-secondary);
+  padding: 0.3rem 0;
+}
+
+.HallBookingCreate__summary-row--discount {
+  color: var(--hbc-color-success-text);
+}
+
+.HallBookingCreate__summary-row--total {
+  font-size: 0.9625rem;
+  font-weight: 500;
+  color: var(--hbc-color-text-primary);
+  border-top: 1px solid var(--hbc-color-border);
+  margin-top: 0.5rem;
+  padding-top: 0.65rem;
+}
+
+/* ── Footer / submit row ───────────────────────────────────── */
+.HallBookingCreate__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.HallBookingCreate__notice {
+  font-size: 0.75rem;
+  color: var(--hbc-color-text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.HallBookingCreate__notice strong {
+  color: var(--hbc-color-text-secondary);
+  font-weight: 500;
+}
+
+.HallBookingCreate__submit-btn {
+  flex-shrink: 0;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--hbc-font-body);
+  color: var(--hbc-color-surface);
+  background: var(--hbc-color-accent);
+  border: 1px solid var(--hbc-color-accent);
+  border-radius: var(--hbc-radius-sm);
+  cursor: pointer;
+  transition: background var(--hbc-transition), transform 0.1s;
+  white-space: nowrap;
+}
+
+.HallBookingCreate__submit-btn:hover:not(:disabled) {
+  background: var(--hbc-color-accent-hover);
+}
+
+.HallBookingCreate__submit-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.HallBookingCreate__submit-btn:disabled,
+.HallBookingCreate__submit-btn--loading {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Toast ─────────────────────────────────────────────────── */
+.HallBookingCreate__toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--hbc-radius-sm);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  animation: hbc-fadeup 0.2s ease;
+}
+
+.HallBookingCreate__toast--success {
+  background: var(--hbc-color-success-bg);
+  border: 1px solid var(--hbc-color-success-border);
+  color: var(--hbc-color-success-text);
+}
+
+.HallBookingCreate__toast--error {
+  background: var(--hbc-color-error-bg);
+  border: 1px solid var(--hbc-color-error-border);
+  color: var(--hbc-color-text-error);
+}
+
+.HallBookingCreate__toast-icon {
+  font-size: 0.875rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ── Tablet (max 768px) ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .HallBookingCreate {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .HallBookingCreate__form {
+    padding: 1.5rem;
+  }
+
+  .HallBookingCreate__title {
+    font-size: 1.6rem;
+  }
+
+  .HallBookingCreate__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .HallBookingCreate__submit-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .HallBookingCreate__notice {
+    text-align: center;
+  }
+}
+
+/* ── Mobile (max 480px) ────────────────────────────────────── */
+@media (max-width: 480px) {
+  .HallBookingCreate {
+    padding: 1.25rem 0.75rem 2.5rem;
+    align-items: stretch;
+  }
+
+  .HallBookingCreate__header {
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+  }
+
+  .HallBookingCreate__form {
+    max-width: 100%;
+    padding: 1.25rem;
+    border-radius: var(--hbc-radius-md);
+  }
+
+  .HallBookingCreate__title {
+    font-size: 1.375rem;
+  }
+
+  .HallBookingCreate__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .HallBookingCreate__row .HallBookingCreate__field {
+    margin-bottom: 1.1rem;
+  }
+
+  .HallBookingCreate__summary {
+    padding: 0.85rem 1rem;
+  }
+
+  .HallBookingCreate__coupon-row {
+    flex-direction: column;
+  }
+
+  .HallBookingCreate__apply-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── Very small (max 360px) ────────────────────────────────── */
+@media (max-width: 360px) {
+  .HallBookingCreate__form {
+    padding: 1rem;
+  }
+
+  .HallBookingCreate__input,
+  .HallBookingCreate__select {
+    font-size: 0.85rem;
+  }
+
+  .HallBookingCreate__submit-btn {
+    font-size: 0.8125rem;
+  }
+}

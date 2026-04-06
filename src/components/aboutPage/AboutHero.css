@@ -1,0 +1,51 @@
+.about-page-heading-box {
+  margin-bottom: 64px;
+}
+.about-page-heading {
+  text-align: center;
+  font-size: 44px;
+
+  font-family: "Playfair Display";
+
+  font-weight: 500;
+
+  margin-bottom: 14px;
+
+  text-transform: capitalize;
+}
+.about-page-sub-heading {
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .about-page-heading {
+    font-size: 32px;
+  }
+  .about-page-sub-heading {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page-heading {
+    font-size: 24px;
+  }
+  .about-page-sub-heading {
+    font-size: 14px;
+  }
+
+  .about-page-heading-box {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-page-heading {
+    font-size: 20px;
+  }
+  .about-page-sub-heading {
+    font-size: 12px;
+  }
+}

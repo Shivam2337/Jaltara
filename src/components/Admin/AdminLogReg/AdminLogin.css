@@ -1,0 +1,87 @@
+/* ===== Admin Login Page ===== */
+
+.admin-login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient(135deg, #4f46e5, #6366f1); */
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== Login Card ===== */
+
+.admin-login-card {
+  width: 350px;
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.admin-login-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* ===== Form ===== */
+
+.admin-login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-login-card label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.admin-login-card input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.admin-login-card input:focus {
+  border-color: #4f46e5;
+}
+
+/* ===== Button ===== */
+
+.admin-login-card button {
+  padding: 10px;
+  background: #1e293b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+/* .admin-login-card button:hover {
+  background: #1e293b;
+} */
+
+/* ===== Register Section ===== */
+
+.admin-register-center {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.admin-register-link {
+  color: #1e293b;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.admin-register-link:hover {
+  text-decoration: underline;
+}

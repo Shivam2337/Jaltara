@@ -1,0 +1,56 @@
+.AdminTestimonial-page {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.AdminTestimonial-header {
+  margin-bottom: 20px;
+}
+
+.AdminTestimonial-header h2 {
+  font-size: 26px;
+}
+
+.AdminTestimonial-table-container {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.AdminTestimonial-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.AdminTestimonial-table thead {
+  background: #f1f5f9;
+}
+
+.AdminTestimonial-table th {
+  padding: 14px;
+  text-align: left;
+}
+
+.AdminTestimonial-table td {
+  padding: 14px;
+  border-top: 1px solid #eee;
+}
+
+.AdminTestimonial-approve-btn {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.AdminTestimonial-approve-btn:hover {
+  background-color: #1e40af;
+}
+.AdminTestimonial-approve-btn:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}

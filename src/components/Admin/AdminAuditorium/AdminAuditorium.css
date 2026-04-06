@@ -1,0 +1,101 @@
+.Admin-auditorium-page {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.Admin-auditorium-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.Admin-auditorium-add-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.Admin-auditorium-table-container {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.Admin-auditorium-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Admin-auditorium-table th,
+.Admin-auditorium-table td {
+  padding: 14px;
+}
+
+.Admin-auditorium-table thead {
+  background: #f1f5f9;
+}
+
+.Admin-auditorium-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.Admin-auditorium-edit {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.Admin-auditorium-delete {
+  color: #dc2626;
+  cursor: pointer;
+}
+
+/* MODAL */
+
+.Admin-auditorium-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Admin-auditorium-modal {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+.Admin-auditorium-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Admin-auditorium-form input,
+.Admin-auditorium-form textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.Admin-auditorium-save {
+  background: #2563eb;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+}
+
+.Admin-auditorium-close {
+  cursor: pointer;
+}

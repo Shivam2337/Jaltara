@@ -1,0 +1,334 @@
+.booking-s2-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px 110px; /* leave space for bottom bar */
+}
+@media (max-width: 720px){
+  .booking-s2-container { padding: 24px 14px 120px; }
+}
+
+.s2-header{
+  border-radius: 18px;
+  padding: 16px 12px;
+  margin-bottom: 16px;
+  background: transparent;
+  position: relative;
+}
+
+.s2-content-hero{
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  width: 100%;
+  position: relative;
+  border: none;
+  box-shadow: none;
+}
+.s2-content-hero:before{
+  content: none;
+}
+
+.booking-s2-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.booking-s2-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.booking-s2-right { display: none; }
+
+/* Stepper */
+.s2-stepper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+.s2-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  transition: color 0.2s ease;
+}
+.s2-step-ico {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 18px;
+}
+.s2-step:hover {
+  color: #0f172a;
+}
+.s2-step.active {
+  background: transparent;
+  color: #2563eb;
+}
+.s2-step.active .s2-step-ico {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+.s2-step.done{
+  background: transparent;
+  color: #22c55e;
+}
+.s2-step.done .s2-step-ico{
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #ffffff;
+}
+.s2-step.disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.s2-step.disabled:hover{
+  color: #6b7280;
+}
+
+/* Option tabs */
+.s2-option-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-radius: 0;
+  color: inherit;
+}
+@media (max-width: 1024px){
+  .s2-option-tabs { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px){
+  .s2-option-tabs { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .s2-option-tabs { grid-template-columns: 1fr; }
+}
+.s2-option-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #1f2937;
+  cursor: pointer;
+}
+.s2-option-tab.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.s2-date-pill{
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  color: #111827;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(17,24,39,0.06);
+}
+.s2-date-ico{
+  font-size: 18px;
+  color: #2563eb;
+}
+@media (max-width: 560px){
+  .s2-date-pill{ position: static; margin-bottom: 8px; }
+}
+
+.s2-tabs-divider{
+  height: 1px;
+  background: #e5e7eb;
+  margin: 10px 0 16px;
+  border-radius: 1px;
+}
+
+/* Promo */
+.s2-promo-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+}
+.s2-promo-label { display: block; margin-bottom: 8px; color: #111827; }
+.s2-promo-row { display: flex; gap: 10px; }
+.s2-promo-input {
+  flex: 1;
+  padding: 12px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+.s2-promo-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #16a34a;
+  color: #fff;
+  cursor: pointer;
+}
+.s2-promo-btn-danger{
+  background: #dc2626;
+}
+
+/* Bottom bar */
+.s2-bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.05);
+}
+.s2-bottom-bar {
+  display: flex;
+  justify-content: center;
+}
+.s2-bottom-bar > div {
+  width: 100%;
+  max-width: 1200px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.s2-bottom-info { display: flex; align-items: center; }
+.s2-bottom-left{ position: relative; display: flex; flex-direction: column; }
+.s2-bottom-amount{ font-size: 22px; font-weight: 800; color: #0f172a; line-height: 1; }
+.s2-view-link{ border: none; background: transparent; color: #2563eb; text-decoration: underline; text-underline-offset: 2px; width: fit-content; margin-top: 4px; cursor: pointer; }
+.s2-bottom-line, .s2-bottom-total { display: flex; justify-content: space-between; gap: 14px; }
+.s2-bottom-total span:last-child { font-weight: 600; }
+.s2-bottom-actions { display: flex; gap: 12px; position: relative; }
+.s2-bottom-actions{ margin-left: 40px; }
+.s2-next-btn{ display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 999px; border: none; background: #1d4ed8; color: #fff; cursor: pointer; }
+.s2-next-btn.disabled{ opacity: 0.6; cursor: not-allowed; }
+@media (max-width: 720px){
+  .s2-bottom-bar > div { flex-direction: column; gap: 10px; }
+  .s2-bottom-actions{ margin-left: 0; }
+  .s2-next-btn{ width: 100%; justify-content: center; }
+}
+
+.s2-order-popover{
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  overflow: hidden;
+  z-index: 1100;
+}
+.s2-order-popover-header{
+  padding: 10px 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #f1f5f9;
+}
+.s2-order-popover-body{
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.s2-order-line{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.s2-order-left{ display: inline-flex; align-items: center; gap: 6px; }
+.s2-order-name{ color: #111827; }
+.s2-order-qty{ color: #6b7280; }
+.s2-order-amt{ font-weight: 600; }
+.s2-order-sep{ height: 1px; background: #e5e7eb; margin: 6px 0; }
+.s2-order-total{ display: flex; align-items: center; justify-content: space-between; font-weight: 700; }
+
+.booking-s3-center{
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 90px;
+}
+
+/* Responsive */
+@media (max-width: 560px){
+  .s2-order-popover{ width: 92vw; left: 50%; transform: translateX(-50%); }
+}
+@media (max-width: 900px) {
+  .s2-option-tabs { grid-template-columns: repeat(2, 1fr); }
+  .s2-stepper { flex-wrap: wrap; gap: 16px; justify-content: center; text-align: center; }
+  .s2-bottom-bar > div { flex-direction: column; align-items: stretch; gap: 12px; }
+  .s2-bottom-actions { justify-content: space-between; }
+  .s2-header { display: flex; flex-direction: column; align-items: center; }
+  .s2-date-pill { position: static; margin: 6px auto 10px; }
+  .s2-order-popover,
+  .s2-order-popover-left {
+    position: fixed !important;       /* Center relative to viewport */
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    bottom: 90px !important;          /* Sit above bottom bar */
+    width: min(520px, 92vw);
+    max-width: calc(100vw - 32px);
+    max-height: 60vh;                 /* Prevent overflow off-screen */
+    overflow-y: auto;
+    z-index: 1100;
+  }
+}
+
+/* Center stepper/date and popover on small screens */
+@media (max-width: 720px){
+  .s2-header { display: flex; flex-direction: column; align-items: center; }
+  .s2-stepper { justify-content: center; text-align: center; }
+  .s2-date-pill { position: static; margin: 6px auto 10px; }
+  .s2-order-popover,
+  .s2-order-popover-left {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: 92vw;
+    max-width: calc(100vw - 32px);
+  }
+}
+
+/* Tablet-only tweaks (keep desktop and mobile unchanged) */
+@media (min-width: 721px) and (max-width: 900px){
+  .s2-bottom-bar > div {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .s2-bottom-actions { width: auto; margin-left: 0; justify-content: center; }
+  .s2-next-btn { width: auto; padding: 12px 24px; }
+}

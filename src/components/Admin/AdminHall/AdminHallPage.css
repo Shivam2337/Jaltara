@@ -1,0 +1,110 @@
+.admin-hall-container {
+  padding: 20px;
+}
+
+/* Gallery Grid */
+.hall-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.hall-gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.hall-gallery-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.hall-gallery-item img:hover {
+  transform: scale(1.03);
+}
+
+.primary-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #339af0;
+  color: white;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.gallery-delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e03131;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.gallery-delete-btn:hover {
+  background: #c92a2a;
+}
+
+/* ✅ FIX — make header-row a flex container and push button to the right */
+.header-row-hall {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.header-row-hall .add-btn {
+  margin-left: auto;
+}
+
+/* ADD HALL BUTTON WRAPPER & TOOLTIP */
+
+.add-hall-btn-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.add-btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hall-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1e293b;
+  color: #fff;
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.hall-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 14px;
+  border: 6px solid transparent;
+  border-bottom-color: #1e293b;
+}

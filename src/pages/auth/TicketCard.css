@@ -1,0 +1,258 @@
+.myacc-ticket-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* SUMMARY */
+.myacc-ticket-summary {
+  display: flex;
+  gap: 16px;
+}
+
+.myacc-ticket-summary-box {
+  flex: 1;
+  background: #f3f7fd;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.myacc-ticket-summary-number {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.myacc-ticket-summary-label {
+  font-size: 14px;
+  color: #666;
+}
+
+/* SECTION */
+.myacc-ticket-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.myacc-ticket-section-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* GRID */
+.myacc-ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* CARD */
+.myacc-ticket-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* HEADER */
+.myacc-ticket-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.myacc-ticket-card-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.myacc-ticket-card-status {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.myacc-ticket-card-status.upcoming {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.myacc-ticket-card-status.past {
+  background: #e5e7eb;
+  color: #555;
+}
+
+.myacc-ticket-card-location {
+  font-size: 13px;
+  color: #777;
+}
+
+/* INFO */
+.myacc-ticket-card-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.myacc-ticket-label {
+  color: #666;
+}
+
+.myacc-ticket-value {
+  font-weight: 600;
+}
+
+/* ========================
+   MOBILE
+   ======================== */
+
+@media (max-width: 600px) {
+  .myacc-ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .myacc-ticket-summary {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .myacc-ticket-main-container {
+    gap: 24px;
+  }
+}
+
+/* STAR RATING */
+.myacc-ticket-stars {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.myacc-ticket-star {
+  font-size: 20px;
+  color: #d1d5db; /* gray-300 */
+  transition: color 0.2s;
+}
+
+.myacc-ticket-star.filled {
+  color: #fbbf24; /* yellow-400 */
+}
+
+.myacc-ticket-star:hover {
+  transform: scale(1.1);
+}
+
+/* FEEDBACK MODAL */
+.feedback-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.feedback-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  padding: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.feedback-modal-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.feedback-modal-stars-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.feedback-modal-star {
+  font-size: 32px;
+  cursor: pointer;
+  color: #d1d5db;
+  transition: all 0.2s;
+}
+
+.feedback-modal-star.active {
+  color: #fbbf24;
+  transform: scale(1.1);
+}
+
+.feedback-modal-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  margin-bottom: 24px;
+  resize: none;
+}
+
+.feedback-modal-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.feedback-modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.feedback-modal-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.feedback-modal-btn-cancel {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.feedback-modal-btn-cancel:hover {
+  background: #e2e8f0;
+}
+
+.feedback-modal-btn-submit {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.feedback-modal-btn-submit:hover {
+  background: #2563eb;
+}
+
+.feedback-modal-btn-submit:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}

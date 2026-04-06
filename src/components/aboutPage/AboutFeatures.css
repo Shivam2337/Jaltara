@@ -1,0 +1,305 @@
+.about-page-features {
+  max-width: 1300px;
+  margin: 0 auto;
+
+  margin-bottom: 128px;
+}
+.about-page-features-heading {
+  font-size: 32px;
+  font-family: "Playfair Display";
+  text-align: center;
+  font-weight: 500;
+
+  margin-bottom: 48px;
+}
+.about-page-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+
+  /* justify-items: center; */
+  align-items: center;
+}
+.about-page-feature-card {
+  justify-items: center;
+  /* background-color: #f7fafc; */
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 330px;
+
+  transition: all 0.3s;
+}
+.about-page-feature-card:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  /* scale: 1.03; */
+
+  transform: translateY(-5px);
+}
+
+.about-page-feature-card-tags {
+  position: absolute;
+
+  top: 5%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+}
+
+.about-page-food-tag {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-family: "Outfit";
+  color: white;
+}
+.about-page-food-tag.veg {
+  background: linear-gradient(to right top, #2f9e44, #37b24d, #51cf66);
+  box-shadow: 0 2px 6px rgba(47, 158, 68, 0.4);
+}
+.about-page-food-tag.nonveg {
+  background: linear-gradient(to right top, #c92a2a, #e03131, #ff6b6b);
+  box-shadow: 0 2px 6px rgba(224, 49, 49, 0.4);
+}
+
+.about-page-feature-card-img {
+  display: block;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  /* border-radius: 10px 10px; */
+}
+.about-page-feature-card-content {
+  position: relative;
+  z-index: 5;
+  padding: 16px;
+
+  padding-bottom: 100px;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s;
+
+  width: 100%;
+}
+
+.about-page-feature-card:hover .about-page-feature-card-content {
+  background: rgba(255, 255, 255, 1);
+
+  transform: translateY(-202px);
+}
+.about-page-feature-card-heading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  padding-top: 10px;
+  margin-bottom: 14px;
+}
+.about-page-feature-card-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.about-page-feature-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  /* align-items: center; */
+}
+.about-page-feature-card-list-li {
+  font-size: 16px;
+  list-style: none;
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  text-transform: capitalize;
+  padding-left: 10px;
+  font-weight: 300;
+}
+.about-page-feature-card-list-li-icon {
+  color: #339af0;
+}
+
+@media (max-width: 1320px) {
+  .about-page-features-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1210px) {
+  .about-page-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    width: 742px;
+    margin: 0 auto;
+
+    gap: 20px;
+  }
+
+  .about-page-feature-card {
+    height: 360px;
+  }
+
+  .about-page-feature-card-img {
+    /* height: 220px; */
+  }
+  .about-page-feature-card:hover .about-page-feature-card-content {
+    background: rgba(255, 255, 255, 1);
+
+    transform: translateY(-245px);
+  }
+}
+@media (max-width: 760px) {
+  .about-page-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    max-width: 98%;
+    margin: 0 auto;
+
+    gap: 20px;
+  }
+
+  .about-page-feature-card {
+    height: 290px;
+  }
+
+  .about-page-feature-card-img-wrapper {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-page-feature-card-img {
+    min-height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .about-page-feature-card-content {
+    padding: 8px;
+  }
+  .about-page-feature-card:hover .about-page-feature-card-content {
+    background: rgba(255, 255, 255, 1);
+    height: 400px;
+
+    transform: translateY(-183px);
+  }
+}
+
+@media (max-width: 580px) {
+  .about-page-features-grid {
+    gap: 16px;
+
+    row-gap: 24px;
+  }
+
+  .about-page-feature-card {
+    height: 250px;
+  }
+  .about-page-features-heading {
+    font-size: 24px;
+  }
+
+  .about-page-feature-card-heading {
+    font-size: 16px;
+  }
+
+  .about-page-feature-card-text {
+    font-size: 14px;
+  }
+
+  .about-page-feature-card-list {
+    gap: 6px;
+  }
+  .about-page-feature-card-list-li {
+    font-size: 14px;
+  }
+
+  .about-page-feature-card-img-wrapper {
+    height: 150px;
+  }
+
+  .about-page-feature-card:hover .about-page-feature-card-content {
+    background: rgba(255, 255, 255, 1);
+    height: 400px;
+
+    transform: translateY(-155px);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page-features {
+    margin-bottom: 60px;
+  }
+
+  .about-page-features-grid {
+    gap: 10px;
+
+    row-gap: 16px;
+  }
+
+  .about-page-feature-card-img-wrapper {
+    height: 150px;
+  }
+
+  .about-page-feature-card-img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+  }
+  .about-page-feature-card-content {
+    padding: 8px 4px;
+  }
+  .about-page-feature-card-text {
+    margin-bottom: 18px;
+  }
+
+  .about-page-feature-card-list-li {
+    gap: 10px;
+  }
+
+  .about-page-food-tag {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 440px) {
+  .about-page-feature-card-heading {
+    font-size: 14px;
+  }
+
+  .about-page-feature-card-text {
+    font-size: 12px;
+  }
+
+  .about-page-feature-card-list {
+    gap: 10px;
+  }
+  .about-page-feature-card-list-li {
+    font-size: 12px;
+    padding-left: 4px;
+  }
+
+  .about-page-feature-card-list-li-icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 440px) {
+}

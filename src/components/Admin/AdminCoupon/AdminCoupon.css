@@ -1,0 +1,125 @@
+.Admin-coupon-page{
+padding:30px;
+background:#f5f7fb;
+min-height:100vh;
+}
+
+.Admin-coupon-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.Admin-coupon-header h2{
+font-size:26px;
+}
+
+.Admin-coupon-add-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:6px;
+font-size:13px;
+}
+
+.Admin-coupon-add-btn:hover{
+background:#1d4ed8;
+}
+
+.Admin-coupon-table-container{
+background:white;
+border-radius:10px;
+overflow:hidden;
+border:1px solid #e5e7eb;
+}
+
+.Admin-coupon-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.Admin-coupon-table thead{
+background:#f1f5f9;
+}
+
+.Admin-coupon-table th,
+.Admin-coupon-table td{
+padding:14px;
+text-align:left;
+border-top:1px solid #eee;
+}
+
+.Admin-coupon-actions{
+display:flex;
+gap:10px;
+}
+
+.Admin-coupon-edit{
+color:#2563eb;
+cursor:pointer;
+}
+
+.Admin-coupon-delete{
+color:#dc2626;
+cursor:pointer;
+}
+
+/* Modal */
+
+.Admin-coupon-modal-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.35);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.Admin-coupon-modal{
+background:white;
+width:420px;
+padding:25px;
+border-radius:10px;
+}
+
+.Admin-coupon-modal-header{
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+}
+
+.Admin-coupon-form{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.Admin-coupon-form input,
+.Admin-coupon-form select{
+padding:8px;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+.Admin-coupon-modal-buttons{
+display:flex;
+justify-content:flex-end;
+}
+
+.Admin-coupon-save-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}

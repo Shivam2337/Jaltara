@@ -1,0 +1,62 @@
+.booking-container{
+padding:30px;
+background:#f4f6f9;
+min-height:100vh;
+}
+
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.bell-icon{
+font-size:20px;
+cursor:pointer;
+}
+
+.table-wrapper{
+background:white;
+border-radius:8px;
+padding:20px;
+}
+
+.booking-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.booking-table th{
+background:#2f3e46;
+color:white;
+padding:12px;
+text-align:left;
+}
+
+.booking-table td{
+padding:12px;
+border-bottom:1px solid #ddd;
+}
+
+.booking-table tr:hover{
+background:#f1f1f1;
+}
+
+.delete-btn{
+background:#e63946;
+border:none;
+color:white;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+}
+
+.delete-btn:hover{
+background:#c1121f;
+}
+
+.no-data{
+text-align:center;
+padding:20px;
+}

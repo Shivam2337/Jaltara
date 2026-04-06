@@ -1,0 +1,87 @@
+.Admin-auditorium-pricing-page {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.Admin-auditorium-pricing-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.Admin-auditorium-pricing-add-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+}
+
+.Admin-auditorium-pricing-table-container {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.Admin-auditorium-pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Admin-auditorium-pricing-table th,
+.Admin-auditorium-pricing-table td {
+  padding: 14px;
+}
+
+.Admin-auditorium-pricing-table thead {
+  background: #f1f5f9;
+}
+
+.Admin-auditorium-pricing-actions {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* MODAL */
+
+.Admin-auditorium-pricing-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Admin-auditorium-pricing-modal {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+.Admin-auditorium-pricing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Admin-auditorium-pricing-form input,
+.Admin-auditorium-pricing-form select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.Admin-auditorium-pricing-save {
+  background: #2563eb;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+}

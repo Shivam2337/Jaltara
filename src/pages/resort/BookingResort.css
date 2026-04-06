@@ -1,0 +1,193 @@
+.booking-resort-page {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  font-family: "Outfit", sans-serif;
+}
+
+.booking-resort-title-card {
+  background: #ffffff;
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.booking-resort-title-card h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.booking-resort-title-card p {
+  font-size: 14px;
+  color: #777;
+}
+
+.booking-resort-price {
+  font-size: 18px;
+  color: #b0895a;
+  font-weight: 600;
+}
+
+.booking-resort-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.booking-resort-desc {
+  line-height: 1.8;
+  color: #444;
+}
+
+.booking-resort-left h2 {
+  font-family: "Playfair Display", serif;
+  margin: 30px 0 16px;
+  position: relative;
+}
+
+.booking-resort-left h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #b0895a;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.booking-resort-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.booking-resort-images {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.booking-resort-images img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.booking-resort-form-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.booking-resort-form-card h3 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.booking-resort-form-card h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #b0895a;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.booking-resort-input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  font-family: "Outfit", sans-serif;
+}
+
+.booking-resort-small {
+  padding: 8px;
+}
+
+.booking-resort-item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.booking-resort-add-item-btn {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.booking-resort-add-item-btn:hover {
+  background: #e5e5e5;
+}
+
+.booking-resort-price-summary {
+  margin-top: 20px;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 10px;
+  font-family: "Outfit", sans-serif;
+}
+
+.booking-resort-payable {
+  font-weight: 600;
+  color: #b0895a;
+  margin-top: 6px;
+}
+
+.booking-resort-book-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #b0895a;
+  transition: background 0.3s ease;
+}
+
+.booking-resort-book-btn:hover {
+  background: #9c774a;
+}
+
+.booking-resort-red-btn {
+  background: #e31b23 !important;
+}
+
+.booking-resort-red-btn:hover {
+  background: #c5181f !important;
+}
+
+@media (max-width: 900px) {
+  .booking-resort-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-resort-images {
+    flex-direction: column;
+  }
+
+  .booking-resort-amenities-grid {
+    grid-template-columns: 1fr;
+  }
+}

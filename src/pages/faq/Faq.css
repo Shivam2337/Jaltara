@@ -1,0 +1,119 @@
+.faq-page-wrapper {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 60px;
+  font-family: "Outfit", sans-serif;
+  color: #2b2b2b;
+}
+
+.faq-page-wrapper h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000000;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+
+.faq-page-wrapper h3 {
+  /* font-family: "Playfair Display", serif; */
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 24px;
+}
+
+.faq-page-wrapper p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-family: "Outfit", sans-serif;
+}
+
+/* ================== LARGE LAPTOP ================== */
+
+@media (max-width: 1200px) {
+  .faq-page-wrapper {
+    padding: 50px;
+  }
+}
+
+/* ================== TABLET ================== */
+
+@media (max-width: 900px) {
+  .faq-page-wrapper {
+    padding: 40px;
+  }
+
+  .faq-page-wrapper h1 {
+    font-size: 28px;
+  }
+
+  .faq-page-wrapper h3 {
+    font-size: 18px;
+  }
+
+  .faq-page-wrapper p {
+    font-size: 15px;
+  }
+}
+
+/* ================== SMALL TABLET ================== */
+
+@media (max-width: 700px) {
+  .faq-page-wrapper {
+    padding: 30px;
+  }
+
+  .faq-page-wrapper h1 {
+    font-size: 26px;
+  }
+
+  .faq-page-wrapper h3 {
+    font-size: 17px;
+  }
+
+  .faq-page-wrapper p {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+}
+
+/* ================== MOBILE ================== */
+
+@media (max-width: 550px) {
+  .faq-page-wrapper {
+    padding: 20px;
+  }
+
+  .faq-page-wrapper h1 {
+    font-size: 24px;
+  }
+
+  .faq-page-wrapper h3 {
+    font-size: 16px;
+  }
+
+  .faq-page-wrapper p {
+    font-size: 14px;
+  }
+}
+
+/* ================== SMALL PHONES ================== */
+
+@media (max-width: 420px) {
+  .faq-page-wrapper {
+    padding: 16px;
+  }
+
+  .faq-page-wrapper h1 {
+    font-size: 22px;
+  }
+
+  .faq-page-wrapper h3 {
+    font-size: 15.5px;
+  }
+
+  .faq-page-wrapper p {
+    font-size: 13.5px;
+  }
+}

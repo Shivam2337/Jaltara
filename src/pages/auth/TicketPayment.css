@@ -1,0 +1,167 @@
+.ticket-payment-page {
+  padding: 90px;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+/* Header */
+.ticket-payment-header {
+  margin-bottom: 20px;
+}
+
+.ticket-payment-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Main Layout */
+.ticket-payment-main {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ticket-payment-card {
+  flex: 1;
+  min-width: 320px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-payment-subtitle {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* Payment Methods */
+.ticket-payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.ticket-payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.ticket-payment-option input[type="radio"] {
+  width: 18px;
+  margin: 0;
+}
+
+/* Card Inputs */
+.ticket-payment-card-inputs input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.ticket-payment-small-inputs {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ticket-payment-small-inputs input {
+  flex: 1;
+}
+
+/* Secure Info */
+.ticket-payment-secure-info {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Voucher */
+.ticket-payment-voucher label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ticket-payment-voucher input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+/* Pay Button */
+.ticket-payment-pay-btn {
+  width: 100%;
+  padding: 12px;
+  background: #d4b841;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ticket-payment-pay-btn:hover {
+  opacity: 0.9;
+}
+
+.ticket-payment-booking-card {
+  flex: 1;
+  min-width: 320px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Row */
+.ticket-payment-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+/* Form Group */
+.ticket-payment-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-payment-form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.ticket-payment-form-group input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+/* Footer */
+.ticket-payment-footer {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.ticket-payment-back-btn {
+  padding: 10px 20px;
+  background: #ccc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ticket-payment-back-btn:hover {
+  opacity: 0.9;
+}

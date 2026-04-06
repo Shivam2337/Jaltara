@@ -1,0 +1,127 @@
+.admin-sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  padding: 15px 15px 10px 15px;   /* reduced bottom padding */
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;           
+  overflow-x: hidden;         
+  scrollbar-width: thin;      /* Firefox */
+  /* overflow: hidden;              prevent scrollbar */
+  box-sizing: border-box; 
+}
+ 
+/* ===== Admin Logo ===== */
+.admin-logo {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+
+  padding: 10px 10px 12px 10px;   /* ✅ balanced spacing */
+  
+  text-align: left;              /* ❌ remove center */
+  letter-spacing: 0.5px;
+}
+
+/* Underline */
+.admin-logo::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+}
+ 
+/* ===== Menu List ===== */
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ 
+/* ===== Menu Items ===== */
+.admin-sidebar li {
+  margin-bottom: 6px;      /* reduced spacing */
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+ 
+/* ===== Links ===== */
+.admin-sidebar li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;       /* reduced height */
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+/* ===== Icons ===== */
+.sidebar-icon {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+/* ===== Hover ===== */
+.admin-sidebar li a:hover {
+  color: #38bdf8;
+  background: rgba(255, 255, 255, 0.08);
+}
+/* ===== Active ===== */
+.admin-sidebar li.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+ 
+.admin-sidebar li.active a {
+  color: white;
+  font-weight: 600;
+}
+/* ===== Push Logout Bottom Properly ===== */
+.logout-container {
+  margin-top: auto;
+  padding-top: 2px;     /* small spacing only */
+}
+/* ===== Logout Button ===== */
+.logout-btn {
+  width: 100%;
+  padding: 8px 10px;     /* reduced height */
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #b91c1c;
+}
+
+.Admin-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.Admin-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.Admin-sidebar::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 10px;
+}
+
+.Admin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
