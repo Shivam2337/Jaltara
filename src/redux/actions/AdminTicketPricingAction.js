@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 export const getTicketPricingAction = () => async (dispatch) => {
   dispatch({ type: "TICKET_PRICING_LIST_REQUEST" });
@@ -12,25 +13,23 @@ export const getTicketPricingAction = () => async (dispatch) => {
 
 export const createTicketPricingAction = (formData) => async (dispatch) => {
   try {
-    console.log("📤 CREATE payload:", formData);
     const { data } = await AdminAPI.post("catalog/admin/ticket-pricing/", formData);
-    console.log("✅ CREATE success:", data);
     dispatch(getTicketPricingAction());
+    toast.success("Ticket pricing created successfully!");
   } catch (err) {
-    console.error("❌ CREATE error status:", err.response?.status);
-    console.error("❌ CREATE error detail:", err.response?.data);
+    console.error("❌ CREATE error:", err.response?.data);
+    toast.error("Failed to create ticket pricing.");
   }
 };
 
 export const updateTicketPricingAction = (id, formData) => async (dispatch) => {
   try {
-    console.log("📤 UPDATE payload:", JSON.stringify(formData)); // ✅ see full payload
     const { data } = await AdminAPI.put(`catalog/admin/ticket-pricing/${id}/`, formData);
-    console.log("✅ UPDATE success:", data);
     dispatch(getTicketPricingAction());
+    toast.success("Ticket pricing updated successfully!");
   } catch (err) {
-    console.error("❌ UPDATE error status:", err.response?.status);
-    console.error("❌ UPDATE error detail:", JSON.stringify(err.response?.data)); // ✅ see full error
+    console.error("❌ UPDATE error:", err.response?.data);
+    toast.error("Failed to update ticket pricing.");
   }
 };
 
@@ -38,7 +37,9 @@ export const deleteTicketPricingAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`catalog/admin/ticket-pricing/${id}/`);
     dispatch(getTicketPricingAction());
+    toast.success("Ticket pricing deleted successfully!");
   } catch (err) {
     console.error("❌ DELETE error:", err.response?.data);
+    toast.error("Failed to delete ticket pricing.");
   }
 };

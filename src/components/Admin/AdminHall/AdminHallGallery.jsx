@@ -6,9 +6,9 @@ import {
   deleteHallGalleryAction,
 } from "../../../redux/actions/AdminHallAction";
 
-// ✅ CHANGE 1 — Import getHallsAction to fetch hall names
 import { getHallsAction } from "../../../redux/actions/AdminHallAction";
 import "./HallGalleryAdmin.css";
+import { toast } from "react-toastify";
 
 const HallGalleryAdmin = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const HallGalleryAdmin = () => {
     e.preventDefault();
 
     if (!image) {
-      alert("Please select image");
+      toast.warn("Please select an image");
       return;
     }
 
@@ -44,12 +44,15 @@ const HallGalleryAdmin = () => {
     formData.append("hall", hall);
     formData.append("image", image);
 
-    await dispatch(createHallGalleryAction(formData));
-
-    setTitle("");
-    setHall("");
-    setImage(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    try {
+      await dispatch(createHallGalleryAction(formData));
+      setTitle("");
+      setHall("");
+      setImage(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    } catch (err) {
+      console.error("Gallery upload error:", err);
+    }
   };
 
   const deleteHandler = (id) => {

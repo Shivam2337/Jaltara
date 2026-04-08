@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 // GET RIDES
 export const getRidesAction = () => async (dispatch) => {
@@ -40,6 +41,7 @@ export const addRideAction = (rideData) => async (dispatch) => {
       type: "RIDE_ADD_SUCCESS",
       payload: data,
     });
+    return data;
 
   } catch (error) {
 
@@ -49,6 +51,7 @@ export const addRideAction = (rideData) => async (dispatch) => {
       type: "RIDE_ADD_FAIL",
       payload: error.response?.data || error.message,
     });
+    throw error;
   }
 };
 
@@ -57,11 +60,11 @@ export const deleteRidesAction = (id) => async (dispatch) => {
   try {
     
     await AdminAPI.delete(`catalog/admin/rides/${id}/`);
-   
     dispatch({ type: "RIDE_DELETE_SUCCESS", payload: id });
+    toast.success("Ride deleted successfully!");
   } catch (error) {
-    
     dispatch({ type: "RIDE_DELETE_FAIL", payload: error.message });
+    toast.error("Failed to delete ride.");
   }
 };
 

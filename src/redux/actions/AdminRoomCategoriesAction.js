@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 /* ================= GET CATEGORIES ================= */
 export const getCategoriesAction = () => async (dispatch) => {
@@ -22,24 +23,24 @@ export const getCategoriesAction = () => async (dispatch) => {
 /* ================= ADD CATEGORY ================= */
 export const addCategoryAction = (payload) => async (dispatch) => {
   try {
-    await AdminAPI.post("catalog/admin/room-categories/", payload);
+    const { data } = await AdminAPI.post("catalog/admin/room-categories/", payload);
     dispatch(getCategoriesAction());
+    return data;
   } catch (error) {
     console.log("ADD CATEGORY ERROR:", error.response?.data);
+    throw error;
   }
 };
 
 /* ================= EDIT CATEGORY ================= */
 export const editCategoryAction = (id, formData) => async (dispatch) => {
   try {
-    console.log("📤 UPDATE payload:", JSON.stringify(formData)); // ✅ see what's being sent
     const response = await AdminAPI.put(`catalog/admin/room-categories/${id}/`, formData);
-    console.log("✅ UPDATE success:", response.data);
     dispatch({ type: "EDIT_CATEGORY_SUCCESS", payload: response.data });
     return response.data;
   } catch (err) {
-    console.error("❌ UPDATE error status:", err.response?.status);
-    console.error("❌ UPDATE error detail:", JSON.stringify(err.response?.data)); // ✅ exact error
+    console.error("❌ UPDATE error:", err.response?.data);
+    throw err;
   }
 };
 
@@ -47,9 +48,10 @@ export const editCategoryAction = (id, formData) => async (dispatch) => {
 export const deleteCategoryAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`catalog/admin/room-categories/${id}/`);
-
     dispatch(getCategoriesAction());
+    toast.success("Category deleted successfully!");
   } catch (error) {
     console.log("DELETE CATEGORY ERROR:", error.response?.data);
+    toast.error("Failed to delete category.");
   }
 };

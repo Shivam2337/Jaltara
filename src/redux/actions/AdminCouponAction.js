@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 /* READ */
 export const getCouponAction = () => async (dispatch) => {
@@ -25,8 +26,10 @@ export const createCouponAction = (formData) => async (dispatch) => {
   try {
     await AdminAPI.post("catalog/admin/coupons/", formData);
     dispatch(getCouponAction());
+    toast.success("Coupon created successfully!");
   } catch (error) {
     console.log(error);
+    toast.error("Failed to create coupon.");
   }
 };
 
@@ -35,8 +38,10 @@ export const updateCouponAction = (id, formData) => async (dispatch) => {
   try {
     await AdminAPI.put(`catalog/admin/coupons/${id}/`, formData);
     dispatch(getCouponAction());
+    toast.success("Coupon updated successfully!");
   } catch (error) {
     console.log(error);
+    toast.error("Failed to update coupon.");
   }
 };
 
@@ -45,7 +50,9 @@ export const deleteCouponAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`catalog/admin/coupons/${id}/`);
     dispatch(getCouponAction());
+    toast.success("Coupon deleted successfully!");
   } catch (error) {
     console.log(error);
+    toast.error("Failed to delete coupon.");
   }
 };

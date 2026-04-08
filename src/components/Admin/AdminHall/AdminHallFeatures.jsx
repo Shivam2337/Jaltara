@@ -9,6 +9,7 @@ import {
   getHallsAction,
 } from "../../../redux/actions/AdminHallAction";
 import "./HallFeaturesAdmin.css";
+import { toast } from "react-toastify";
 
 const HallFeaturesAdmin = () => {
   const dispatch = useDispatch();
@@ -34,22 +35,21 @@ const HallFeaturesAdmin = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const data = {
-      hall,
-      name,
-      feature_type: featureType,
-    };
+    const data = { hall, name, feature_type: featureType };
 
-    if (editId) {
-      await dispatch(updateHallFeatureAction(editId, data));
-      setEditId(null);
-    } else {
-      await dispatch(createHallFeatureAction(data));
+    try {
+      if (editId) {
+        await dispatch(updateHallFeatureAction(editId, data));
+        setEditId(null);
+      } else {
+        await dispatch(createHallFeatureAction(data));
+      }
+      setHall("");
+      setName("");
+      setFeatureType("");
+    } catch (err) {
+      console.error("Feature submit error:", err);
     }
-
-    setHall("");
-    setName("");
-    setFeatureType("");
   };
 
   const editHandler = (item) => {

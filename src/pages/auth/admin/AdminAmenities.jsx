@@ -3,6 +3,7 @@ import "./AdminAmenities.css";
 
 import { FaPlus, FaEdit, FaTrash, FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import {
   getAmenitiesAction,
@@ -45,10 +46,18 @@ const AdminAmenities = () => {
 
   // SUBMIT FORM (FORCE ACTIVE)
   const handleSubmit = () => {
+    if (!formData.name.trim()) {
+      toast.warn("Name is required.");
+      return;
+    }
+    if (!editId && !(formData.image instanceof File)) {
+      toast.warn("Image is required.");
+      return;
+    }
 
     const payload = {
       ...formData,
-      is_active: 1, // ✅ ALWAYS ACTIVE
+      is_active: 1,
     };
 
     if (editId) {
@@ -57,12 +66,7 @@ const AdminAmenities = () => {
       dispatch(createAmenityAction(payload));
     }
 
-    // RESET
-    setFormData({
-      name: "",
-      image: null,
-    });
-
+    setFormData({ name: "", image: null });
     setShowModal(false);
     setEditId(null);
   };

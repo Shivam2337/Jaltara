@@ -12,6 +12,7 @@ import {
 import AdminAPI from "../../../BaseAPI/AdminAPI";
 
 import { FaEdit, FaTrash, FaTimes, FaSearch, FaFilter, FaPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import "./AdminPackagePricing.css";
 
@@ -313,9 +314,9 @@ const AdminPackagePricing = () => {
 
               </div>
               
-              <input type="date" name="start_date" value={formData.start_date} onChange={handleChange} />
+              <input type="date"    required name="start_date" value={formData.start_date} onChange={handleChange} />
 
-              <input type="date" name="end_date" value={formData.end_date} onChange={handleChange} />
+              <input type="date"    required name="end_date" value={formData.end_date} onChange={handleChange} />
 
               <input name="base_price" placeholder="Base Price" value={formData.base_price} onChange={handleChange} />
 

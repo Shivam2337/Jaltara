@@ -123,8 +123,10 @@ export default function RideManagement() {
       let response;
       if (editingId) {
         response = await dispatch(editRidesAction(editingId, payload));
+        toast.success("Ride updated successfully!");
       } else {
         response = await dispatch(addRideAction(payload));
+        toast.success("Ride added successfully!");
       }
 
       const rideId = response?.payload?.id || response?.id;
@@ -143,7 +145,6 @@ export default function RideManagement() {
         });
         console.log("Image upload response:", res.data);
 
-        // Update local Redux state immediately
         dispatch({
           type: "RIDE_ADD_IMAGE_LOCAL",
           payload: { rideId, image: res.data },
@@ -166,6 +167,7 @@ export default function RideManagement() {
       });
     } catch (error) {
       console.error("Save Error:", error);
+      toast.error(editingId ? "Failed to update ride." : "Failed to add ride.");
     }
   };
 

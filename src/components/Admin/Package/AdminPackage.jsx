@@ -9,6 +9,7 @@ import {
 } from "../../../redux/actions/AdminPackageAction";
 
 import AdminAPI from "../../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 import "./AdminPackage.css";
 import { FaSearch, FaTimes, FaFilter, FaPlus } from "react-icons/fa";
@@ -55,6 +56,14 @@ export default function AdminWaterParkPackage() {
   };
 
   const handleSave = async () => {
+    if (!formData.name.trim()) {
+      toast.warn("Package Name is required.");
+      return;
+    }
+    if (!formData.package_type) {
+      toast.warn("Package Type is required.");
+      return;
+    }
     try {
       const payload = {
         name: formData.name,
@@ -74,13 +83,7 @@ export default function AdminWaterParkPackage() {
         response = await dispatch(addPackageAction(payload));
       }
 
-      // ✅ CHANGE 1 — fixed packageId resolution, response is plain data not {payload}
-      console.log("📦 response from action:", response);
-      const packageId =
-        response?.id ||
-        response?.payload?.id ||
-        response?.payload?.data?.id;
-      console.log("📦 packageId:", packageId);
+      const packageId = response?.id || response?.payload?.id || response?.payload?.data?.id;
 
       if (formData.image && packageId) {
         const imageData = new FormData();
@@ -95,20 +98,11 @@ export default function AdminWaterParkPackage() {
       dispatch(getPackageAction());
       setShowModal(false);
       setFormData({
-        id: null,
-        name: "",
-        description: "",
-        package_type: "",
-        duration_hours: "",
-        max_adults: "",
-        max_children: "",
-        max_seniors: "",
-        is_active: true,
-        image: null,
-        image_id: null,
-        image_preview: "",
+        id: null, name: "", description: "", package_type: "",
+        duration_hours: "", max_adults: "", max_children: "",
+        max_seniors: "", is_active: true, image: null,
+        image_id: null, image_preview: "",
       });
-
     } catch (error) {
       console.error("Save Error:", error);
     }
@@ -299,9 +293,9 @@ export default function AdminWaterParkPackage() {
             <h3>{formData.id ? "Edit Package" : "Add Package"}</h3>
 
             <div className="form-grid">
-              <input type="text" name="name" placeholder="Package Name" value={formData.name} onChange={handleChange} />
+              <input type="text" name="name" placeholder="Package Name" value={formData.name} onChange={handleChange} required />
               <input type="text" name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
-              <select name="package_type" value={formData.package_type} onChange={handleChange}>
+              <select name="package_type" value={formData.package_type} onChange={handleChange} required>
                 <option value="">Select Package Type</option>
                 <option value="special_offers">Special Offers</option>
                 <option value="group_package">Group Package</option>

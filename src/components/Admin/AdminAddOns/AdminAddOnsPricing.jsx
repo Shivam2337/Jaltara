@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AdminAddOnsPricing.css";
 
 import { FaPlus, FaEdit, FaTrash, FaTimes } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -58,7 +59,22 @@ const AdminAddOnPricing = () => {
   };
 
   const handleSubmit = () => {
-
+    if (!formData.addon) {
+      toast.warn("Please select an AddOn.");
+      return;
+    }
+    if (!formData.start_date) {
+      toast.warn("Start Date is required.");
+      return;
+    }
+    if (!formData.end_date) {
+      toast.warn("End Date is required.");
+      return;
+    }
+    if (!formData.price) {
+      toast.warn("Price is required.");
+      return;
+    }
     if (editId) {
       dispatch(updateAddOnPricingAction(editId, formData));
     } else {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AdminAddOns.css";
 
 import { FaPlus, FaEdit, FaTrash, FaTimes } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -41,7 +42,10 @@ const AdminAddOns = () => {
   };
 
   const handleSubmit = () => {
-
+    if (!formData.name.trim()) {
+      toast.warn("Name is required.");
+      return;
+    }
     if (editId) {
       dispatch(updateAddOnAction(editId, formData));
     } else {

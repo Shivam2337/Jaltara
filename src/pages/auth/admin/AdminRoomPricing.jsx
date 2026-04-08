@@ -11,6 +11,7 @@ import {
 } from "../../../redux/actions/AdminRoomPricingAction";
 
 import { getCategoriesAction } from "../../../redux/actions/AdminRoomCategoriesAction";
+import { toast } from "react-toastify";
 
 const AdminRoomPricing = () => {
 
@@ -70,8 +71,8 @@ const AdminRoomPricing = () => {
 
     e.preventDefault();
 
-    if (!formData.category || !formData.start_date || !formData.end_date || !formData.base_price) {
-      alert("Please fill all required fields");
+    if (!formData.category || !formData.start_date || !formData.end_date || !formData.base_price || !formData.meal_plan) {
+      toast.warn("Please fill all required fields");
       return;
     }
 
@@ -377,6 +378,7 @@ const AdminRoomPricing = () => {
                   name="meal_plan"
                   value={formData.meal_plan}
                   onChange={handleChange}
+                   required
                 >
                   <option value="">Select Meal Plan</option>
                   <option value="room_only">Room Only</option>

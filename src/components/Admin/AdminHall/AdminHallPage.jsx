@@ -8,6 +8,7 @@ import {
   updateHallAction,
   deleteHallAction,
 } from "../../../redux/actions/AdminHallAction";
+import { toast } from "react-toastify";
 
 export default function AdminHallPage() {
 
@@ -72,19 +73,14 @@ export default function AdminHallPage() {
     form.append("parking", formData.parking === true ? "true" : "false");
     form.append("phone_number", formData.phone_number);
     form.append("email", formData.email);
-
-    // ✅ FIX — only append main_image if a NEW file is selected
-    // if editing without changing image, skip main_image entirely
     if (formData.main_image instanceof File) {
       form.append("main_image", formData.main_image);
     }
-
     if (editId) {
       await dispatch(updateHallAction(editId, form));
     } else {
       await dispatch(createHallAction(form));
     }
-
     resetForm();
   } catch (err) {
     console.error("❌ Save error:", err);

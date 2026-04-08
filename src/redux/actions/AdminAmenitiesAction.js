@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 /* ================= GET AMENITIES ================= */
 export const getAmenitiesAction = () => async (dispatch) => {
@@ -25,29 +26,19 @@ export const getAmenitiesAction = () => async (dispatch) => {
 export const createAmenityAction = (amenity) => async (dispatch) => {
   try {
     const formData = new FormData();
-
     formData.append("name", amenity.name || "");
-
     formData.append("is_active", amenity.is_active ? 1 : 0);
-
     if (amenity.image instanceof File) {
       formData.append("image", amenity.image);
     }
-
-    await AdminAPI.post(
-      "cms/admin/amenities/",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
+    await AdminAPI.post("cms/admin/amenities/", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     dispatch(getAmenitiesAction());
-
+    toast.success("Amenity created successfully!");
   } catch (error) {
     console.log("❌ CREATE ERROR:", error.response?.data || error.message);
+    toast.error("Failed to create amenity.");
   }
 };
 
@@ -55,29 +46,21 @@ export const createAmenityAction = (amenity) => async (dispatch) => {
 export const updateAmenityAction = (id, amenity) => async (dispatch) => {
   try {
     const formData = new FormData();
-
     formData.append("name", amenity.name || "");
-
-        formData.append("is_active", amenity.is_active ? 1 : 0);
-
-
-    // ✅ ALWAYS send image (file OR existing URL)
+    formData.append("is_active", amenity.is_active ? 1 : 0);
     if (amenity.image instanceof File) {
       formData.append("image", amenity.image);
     } else if (typeof amenity.image === "string") {
       formData.append("image", amenity.image);
     }
-
     await AdminAPI.put(`cms/admin/amenities/${id}/`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      headers: { "Content-Type": "multipart/form-data" },
     });
-
     dispatch(getAmenitiesAction());
-
+    toast.success("Amenity updated successfully!");
   } catch (error) {
     console.log("❌ UPDATE ERROR:", error.response?.data || error.message);
+    toast.error("Failed to update amenity.");
   }
 };
 
@@ -85,10 +68,10 @@ export const updateAmenityAction = (id, amenity) => async (dispatch) => {
 export const deleteAmenityAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`cms/admin/amenities/${id}/`);
-
     dispatch(getAmenitiesAction());
-
+    toast.success("Amenity deleted successfully!");
   } catch (error) {
     console.log("❌ DELETE ERROR:", error.response?.data || error.message);
+    toast.error("Failed to delete amenity.");
   }
 };

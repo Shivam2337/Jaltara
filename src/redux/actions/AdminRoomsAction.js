@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 /* ================= GET ROOMS ================= */
 export const getRoomsAction = () => async (dispatch) => {
@@ -26,9 +27,8 @@ export const createRoomAction = (roomData) => async (dispatch) => {
   try {
     dispatch({ type: "ROOM_CREATE_REQUEST" });
     const { data } = await AdminAPI.post("catalog/admin/rooms/", roomData);
-
     dispatch({ type: "ROOM_CREATE_SUCCESS", payload: data });
-    return data; // ✅ Return the newly created room including ID
+    return data;
   } catch (error) {
     dispatch({ type: "ROOM_CREATE_FAIL", payload: error.response?.data || error.message });
     throw error;
@@ -74,21 +74,11 @@ dispatch(getRoomsAction()); // ✅ refresh list after update
 export const deleteRoomAction = (id) => async (dispatch) => {
   try {
     dispatch({ type: "ROOM_DELETE_REQUEST" });
-    console.log("Deleting room:", id); // ✅ log DELETE
-
     await AdminAPI.delete(`catalog/admin/rooms/${id}/`);
-
-    console.log("Room deleted:", id);
-
-    dispatch({
-      type: "ROOM_DELETE_SUCCESS",
-      payload: id,
-    });
+    dispatch({ type: "ROOM_DELETE_SUCCESS", payload: id });
+    toast.success("Room deleted successfully!");
   } catch (error) {
-    console.error("Room delete error:", error.response?.data || error.message);
-    dispatch({
-      type: "ROOM_DELETE_FAIL",
-      payload: error.response?.data || error.message,
-    });
+    dispatch({ type: "ROOM_DELETE_FAIL", payload: error.response?.data || error.message });
+    toast.error("Failed to delete room.");
   }
 };

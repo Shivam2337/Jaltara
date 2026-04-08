@@ -3,6 +3,7 @@ import "./AdminCoupon.css";
 
 import { FaPlus, FaEdit, FaTrash, FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import {
   getCouponAction,
@@ -54,6 +55,26 @@ const AdminCoupon = () => {
 
   /* SUBMIT */
   const handleSubmit = () => {
+    if (!formData.code.trim()) {
+      toast.warn("Coupon Code is required.");
+      return;
+    }
+    if (!formData.discount_value) {
+      toast.warn("Discount Value is required.");
+      return;
+    }
+    if (!formData.min_amount) {
+      toast.warn("Minimum Amount is required.");
+      return;
+    }
+    if (!formData.valid_from) {
+      toast.warn("Valid From date is required.");
+      return;
+    }
+    if (!formData.valid_to) {
+      toast.warn("Valid To date is required.");
+      return;
+    }
 
     if (editId) {
       dispatch(updateCouponAction(editId, formData));
@@ -254,6 +275,7 @@ const AdminCoupon = () => {
                 placeholder="Coupon Code"
                 value={formData.code}
                 onChange={handleChange}
+                required
               />
 
               <select
@@ -271,6 +293,7 @@ const AdminCoupon = () => {
                 placeholder="Discount Value"
                 value={formData.discount_value}
                 onChange={handleChange}
+                required
               />
 
               <input
@@ -287,6 +310,7 @@ const AdminCoupon = () => {
                 placeholder="Minimum Amount"
                 value={formData.min_amount}
                 onChange={handleChange}
+                required
               />
 
               <input
@@ -294,6 +318,7 @@ const AdminCoupon = () => {
                 name="valid_from"
                 value={formData.valid_from}
                 onChange={handleChange}
+                required
               />
 
               <input
@@ -301,6 +326,7 @@ const AdminCoupon = () => {
                 name="valid_to"
                 value={formData.valid_to}
                 onChange={handleChange}
+                required
               />
 
               <label>

@@ -20,6 +20,7 @@ import {
 } from "../../../redux/actions/AdminPackageItemAction";
 
 import AdminAPI from "../../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 export default function AdminPackageItems() {
 
@@ -97,15 +98,7 @@ export default function AdminPackageItems() {
 
     setShowModal(false);
     setEditId(null);
-
-    setFormData({
-      package_name: "",
-      item_type: "",
-      room_category_name: "",
-      ticket_type_name: "",
-      ride: "",
-      quantity: "",
-    });
+    setFormData({ package_name: "", item_type: "", room_category_name: "", ticket_type_name: "", ride: "", quantity: "" });
   };
 
   const handleEdit = (item) => {

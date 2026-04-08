@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 // ========================
 // HALL PAGE ACTIONS
@@ -18,45 +19,45 @@ export const getHallsAction = () => async (dispatch) => {
 
 export const createHallAction = (formData) => async (dispatch) => {
   try {
-    console.log("📤 CREATE Hall payload:", formData);
     const { data } = await AdminAPI.post("cms/admin/hall-page/", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    console.log("✅ Hall created:", data);
     dispatch({ type: "HALL_CREATE_SUCCESS", payload: data });
     dispatch(getHallsAction());
+    toast.success("Hall created successfully!");
     return data;
   } catch (err) {
     console.error("❌ CREATE Hall error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to create hall.");
+    throw err;
   }
 };
 
 export const updateHallAction = (id, formData) => async (dispatch) => {
   try {
-    console.log("📤 UPDATE Hall payload:", formData);
-    const { data } = await AdminAPI.patch(
-      // ✅ FIX 1 — changed PUT to PATCH so main_image is not required
-      `cms/admin/hall-page/${id}/`,
-      formData,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
-    console.log("✅ Hall updated:", data);
+    const { data } = await AdminAPI.patch(`cms/admin/hall-page/${id}/`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     dispatch({ type: "HALL_UPDATE_SUCCESS", payload: data });
     dispatch(getHallsAction());
+    toast.success("Hall updated successfully!");
     return data;
   } catch (err) {
     console.error("❌ UPDATE Hall error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to update hall.");
+    throw err;
   }
 };
 
 export const deleteHallAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`cms/admin/hall-page/${id}/`);
-    console.log("✅ Hall deleted:", id);
     dispatch({ type: "HALL_DELETE_SUCCESS", payload: id });
     dispatch(getHallsAction());
+    toast.success("Hall deleted successfully!");
   } catch (err) {
     console.error("❌ DELETE Hall error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to delete hall.");
   }
 };
 
@@ -81,11 +82,13 @@ export const createHallGalleryAction = (formData) => async (dispatch) => {
     const { data } = await AdminAPI.post("cms/admin/hall-gallery/", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    console.log("✅ Hall Gallery image uploaded:", data);
     dispatch(getHallGalleryAction());
+    toast.success("Image uploaded successfully!");
     return data;
   } catch (err) {
     console.error("❌ Hall Gallery upload error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to upload image.");
+    throw err;
   }
 };
 
@@ -93,8 +96,10 @@ export const deleteHallGalleryAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`cms/admin/hall-images/${id}/`);
     dispatch(getHallGalleryAction());
+    toast.success("Image deleted successfully!");
   } catch (err) {
     console.error("❌ Hall Gallery delete error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to delete image.");
   }
 };
 
@@ -117,22 +122,26 @@ export const getHallFeaturesAction = () => async (dispatch) => {
 export const createHallFeatureAction = (formData) => async (dispatch) => {
   try {
     const { data } = await AdminAPI.post("cms/admin/hall-feature/", formData);
-    console.log("✅ Hall Feature created:", data);
     dispatch(getHallFeaturesAction());
+    toast.success("Feature added successfully!");
     return data;
   } catch (err) {
     console.error("❌ Hall Feature create error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to add feature.");
+    throw err;
   }
 };
 
 export const updateHallFeatureAction = (id, formData) => async (dispatch) => {
   try {
     const { data } = await AdminAPI.put(`cms/admin/hall-feature/${id}/`, formData);
-    console.log("✅ Hall Feature updated:", data);
     dispatch(getHallFeaturesAction());
+    toast.success("Feature updated successfully!");
     return data;
   } catch (err) {
     console.error("❌ Hall Feature update error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to update feature.");
+    throw err;
   }
 };
 
@@ -140,7 +149,9 @@ export const deleteHallFeatureAction = (id) => async (dispatch) => {
   try {
     await AdminAPI.delete(`cms/admin/hall-feature/${id}/`);
     dispatch(getHallFeaturesAction());
+    toast.success("Feature deleted successfully!");
   } catch (err) {
     console.error("❌ Hall Feature delete error:", JSON.stringify(err.response?.data));
+    toast.error("Failed to delete feature.");
   }
 };

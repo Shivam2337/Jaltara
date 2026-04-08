@@ -146,12 +146,12 @@ const AdminSidebar = () => {
     //   icon: <FaCogs />,
     //   superuserOnly: false,
     // },
-    {
-      name: "Admin Contact",
-      path: "/AdminContact",
-      icon: <FaCogs />,
-      superuserOnly: false,
-    },
+    // {
+    //   name: "Admin Contact",
+    //   path: "/AdminContact",
+    //   icon: <FaCogs />,
+    //   superuserOnly: false,
+    // },
     {
       name: "FAQ",
       path: "/AdminFaq",

@@ -10,7 +10,7 @@ import {
   deleteCategoryAction,
 } from "../../../redux/actions/AdminRoomCategoriesAction";
 
-// ✅ CHANGE 1 — Added AdminAPI import for image upload
+import { toast } from "react-toastify";
 import AdminAPI from "../../../BaseAPI/AdminAPI";
 
 export default function AdminRoomCategories() {
@@ -63,7 +63,7 @@ export default function AdminRoomCategories() {
 
   const handleSave = async () => {
     if (!formData.name.trim()) {
-      alert("Category Name is required");
+      toast.warn("Category Name is required");
       return;
     }
 
@@ -79,35 +79,37 @@ export default function AdminRoomCategories() {
       is_active: formData.active,
     };
 
-    let response;
-    if (editId) {
-      response = await dispatch(editCategoryAction(editId, payload));
-    } else {
-      response = await dispatch(addCategoryAction(payload));
-    }
-
-    // ✅ CHANGE 4 — Upload image after save
-    const categoryId = response?.id || response?.payload?.id || editId;
-    console.log("📦 categoryId:", categoryId);
-
-    if (formData.image && categoryId) {
-      try {
-        const imageData = new FormData();
-        imageData.append("category", categoryId);
-        imageData.append("image", formData.image);
-        imageData.append("is_primary", true);
-
-        await AdminAPI.post("catalog/admin/room-images/", imageData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        console.log("✅ Image uploaded successfully");
-      } catch (err) {
-        console.error("❌ Image upload error:", err.response?.data);
+    try {
+      let response;
+      if (editId) {
+        response = await dispatch(editCategoryAction(editId, payload));
+        toast.success("Category updated successfully!");
+      } else {
+        response = await dispatch(addCategoryAction(payload));
+        toast.success("Category added successfully!");
       }
-    }
 
-    dispatch(getCategoriesAction());
-    resetForm();
+      const categoryId = response?.id || response?.payload?.id || editId;
+
+      if (formData.image && categoryId) {
+        try {
+          const imageData = new FormData();
+          imageData.append("category", categoryId);
+          imageData.append("image", formData.image);
+          imageData.append("is_primary", true);
+          await AdminAPI.post("catalog/admin/room-images/", imageData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+        } catch (err) {
+          console.error("❌ Image upload error:", err.response?.data);
+        }
+      }
+
+      dispatch(getCategoriesAction());
+      resetForm();
+    } catch (error) {
+      toast.error(editId ? "Failed to update category." : "Failed to add category.");
+    }
   };
 
   const handleEdit = (cat) => {

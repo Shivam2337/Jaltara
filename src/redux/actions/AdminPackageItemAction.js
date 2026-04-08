@@ -1,4 +1,5 @@
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 export const getPackageItems = () => async (dispatch) => {
 
@@ -27,31 +28,16 @@ export const getPackageItems = () => async (dispatch) => {
 
 
 export const createPackageItem = (data) => async (dispatch) => {
-
   dispatch({ type: "PACKAGE_ITEM_CREATE_REQUEST" });
-
   try {
-
-    const response = await AdminAPI.post(
-      "catalog/admin/packages-items/",
-      data
-    );
-
-    dispatch({
-      type: "PACKAGE_ITEM_CREATE_SUCCESS",
-      payload: response.data
-    });
-
+    const response = await AdminAPI.post("catalog/admin/packages-items/", data);
+    dispatch({ type: "PACKAGE_ITEM_CREATE_SUCCESS", payload: response.data });
+    toast.success("Package item added successfully!");
   } catch (error) {
-      
-    dispatch(getPackageItems()); // Refresh list on error to sync state
-    dispatch({
-      type: "PACKAGE_ITEM_CREATE_FAIL",
-      payload: error.response?.data || "Error"
-    });
-
+    dispatch(getPackageItems());
+    dispatch({ type: "PACKAGE_ITEM_CREATE_FAIL", payload: error.response?.data || "Error" });
+    toast.error("Failed to add package item.");
   }
-
 };
 
 /* ============================= */
@@ -59,33 +45,17 @@ export const createPackageItem = (data) => async (dispatch) => {
 /* ============================= */
 
 export const updatePackageItem = (id, data) => async (dispatch) => {
-
   dispatch({ type: "PACKAGE_ITEM_UPDATE_REQUEST" });
-
   try {
-
-    const response = await AdminAPI.put(
-      `catalog/admin/packages-items/${id}/`,
-      data
-    );
-
-    dispatch({
-      type: "PACKAGE_ITEM_UPDATE_SUCCESS",
-      payload: response.data
-    });
-
-    /* Refresh List */
+    const response = await AdminAPI.put(`catalog/admin/packages-items/${id}/`, data);
+    dispatch({ type: "PACKAGE_ITEM_UPDATE_SUCCESS", payload: response.data });
     dispatch(getPackageItems());
-
+    toast.success("Package item updated successfully!");
   } catch (error) {
-    dispatch(getPackageItems()); // Refresh list on error to sync state
-    dispatch({
-      type: "PACKAGE_ITEM_UPDATE_FAIL",
-      payload: error.response?.data || "Error updating package item"
-    });
-
+    dispatch(getPackageItems());
+    dispatch({ type: "PACKAGE_ITEM_UPDATE_FAIL", payload: error.response?.data || "Error updating package item" });
+    toast.error("Failed to update package item.");
   }
-
 };
 
 
@@ -95,30 +65,14 @@ export const updatePackageItem = (id, data) => async (dispatch) => {
 /* ============================= */
 
 export const deletePackageItem = (id) => async (dispatch) => {
-
   dispatch({ type: "PACKAGE_ITEM_DELETE_REQUEST" });
-
   try {
-
-    await AdminAPI.delete(
-      `catalog/admin/packages-items/${id}/`
-    );
-
-    dispatch({
-      type: "PACKAGE_ITEM_DELETE_SUCCESS",
-      payload: id
-    });
-
-    /* Refresh List */
+    await AdminAPI.delete(`catalog/admin/packages-items/${id}/`);
+    dispatch({ type: "PACKAGE_ITEM_DELETE_SUCCESS", payload: id });
     dispatch(getPackageItems());
-
+    toast.success("Package item deleted successfully!");
   } catch (error) {
-
-    dispatch({
-      type: "PACKAGE_ITEM_DELETE_FAIL",
-      payload: error.response?.data || "Error deleting package item"
-    });
-
+    dispatch({ type: "PACKAGE_ITEM_DELETE_FAIL", payload: error.response?.data || "Error deleting package item" });
+    toast.error("Failed to delete package item.");
   }
-
 };

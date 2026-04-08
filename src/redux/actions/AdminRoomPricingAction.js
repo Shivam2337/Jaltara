@@ -1,5 +1,6 @@
 // redux/actions/AdminRoomPricingAction.js
 import AdminAPI from "../../BaseAPI/AdminAPI";
+import { toast } from "react-toastify";
 
 /* ================= GET PRICING ================= */
 export const getPricingAction = () => async (dispatch) => {
@@ -31,10 +32,7 @@ export const getPricingAction = () => async (dispatch) => {
 
 /* ================= ADD PRICING ================= */
 export const addPricingAction = (formData) => async (dispatch) => {
-  console.log("===== ADD PRICING CALLED =====", formData);
-
   try {
-    // Ensure types for API
     const payload = {
       ...formData,
       category: parseInt(formData.category),
@@ -44,22 +42,17 @@ export const addPricingAction = (formData) => async (dispatch) => {
       seasonal_discount_percent: parseFloat(formData.seasonal_discount_percent || 0),
       is_weekend: Boolean(formData.is_weekend)
     };
-    console.log("Payload for ADD:", payload);
-
-    const response = await AdminAPI.post("catalog/admin/room-pricing/", payload);
-    console.log("✅ ADD PRICING SUCCESS:", response.data);
-
+    await AdminAPI.post("catalog/admin/room-pricing/", payload);
     dispatch(getPricingAction());
-
+    toast.success("Pricing added successfully!");
   } catch (error) {
     console.error("❌ ADD PRICING ERROR:", error.response || error.message);
+    toast.error("Failed to add pricing.");
   }
 };
 
 /* ================= EDIT PRICING ================= */
 export const editPricingAction = (id, formData) => async (dispatch) => {
-  console.log("===== EDIT PRICING CALLED =====", id, formData);
-
   try {
     const payload = {
       ...formData,
@@ -70,30 +63,24 @@ export const editPricingAction = (id, formData) => async (dispatch) => {
       seasonal_discount_percent: parseFloat(formData.seasonal_discount_percent || 0),
       is_weekend: Boolean(formData.is_weekend)
     };
-    console.log("Payload for EDIT:", payload);
-
-    const response = await AdminAPI.put(`catalog/admin/room-pricing/${id}/`, payload);
-    console.log("✅ EDIT PRICING SUCCESS:", response.data);
-
+    await AdminAPI.put(`catalog/admin/room-pricing/${id}/`, payload);
     dispatch(getPricingAction());
-
+    toast.success("Pricing updated successfully!");
   } catch (error) {
     console.error("❌ EDIT PRICING ERROR:", error.response || error.message);
+    toast.error("Failed to update pricing.");
   }
 };
 
 /* ================= DELETE PRICING ================= */
 export const deletePricingAction = (id) => async (dispatch) => {
-  console.log("===== DELETE PRICING CALLED =====", id);
-
   try {
-    const response = await AdminAPI.delete(`catalog/admin/room-pricing/${id}/`);
-    console.log("✅ DELETE PRICING SUCCESS:", response.data);
-
+    await AdminAPI.delete(`catalog/admin/room-pricing/${id}/`);
     dispatch(getPricingAction());
-
+    toast.success("Pricing deleted successfully!");
   } catch (error) {
     console.error("❌ DELETE PRICING ERROR:", error.response || error.message);
+    toast.error("Failed to delete pricing.");
   }
 };
 

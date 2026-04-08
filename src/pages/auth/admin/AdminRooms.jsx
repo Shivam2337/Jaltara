@@ -10,6 +10,7 @@ import {
   deleteRoomAction,
 } from "../../../redux/actions/AdminRoomsAction";
 
+import { toast } from "react-toastify";
 import AdminAPI from "../../../BaseAPI/AdminAPI";
 
 export default function AdminRooms() {
@@ -97,13 +98,9 @@ export default function AdminRooms() {
     setShowModal(false);
   };
 
-  // ================= SAVE =================
   const handleSubmit = async () => {
-  console.log("Submitting form. Edit ID:", editId);
-  console.log("Current formData:", formData);
-
   if (!formData.room_number || !formData.category_name) {
-    alert("Room number and category are required.");
+    toast.warn("Room number and category are required.");
     return;
   }
 
@@ -113,66 +110,47 @@ export default function AdminRooms() {
   form.append("floor", formData.floor);
   form.append("status", formData.status);
   form.append("is_active", formData.is_active ? "true" : "false");
-
-  if (formData.image) {
-    form.append("image", formData.image);
-    console.log("Appending image to form data:", formData.image);
-  }
+  if (formData.image) form.append("image", formData.image);
 
   try {
-    let response;
-
     if (editId) {
-      console.log("Editing room with ID:", editId);
-      response = await dispatch(updateRoomAction(editId, form));
-      console.log("Update response:", response);
-
+      await dispatch(updateRoomAction(editId, form));
+      toast.success("Room updated successfully!");
       setLocalRooms((prev) =>
         prev.map((r) =>
           r.id === editId
             ? {
                 ...r,
                 room_number: formData.room_number,
-                category_name: categories.find(
-                  (c) => c.id === +formData.category
-                )?.name,
+                category_name: categories.find((c) => c.id === +formData.category)?.name,
                 floor: formData.floor,
                 status: formData.status,
-                images: formData.image
-                  ? [{ image: formData.image_preview }]
-                  : r.images,
+                images: formData.image ? [{ image: formData.image_preview }] : r.images,
               }
             : r
         )
       );
     } else {
-      console.log("Adding new room...");
       const tempId = Date.now();
-      const newRoom = {
-        id: tempId,
-        room_number: formData.room_number,
-        category_name: categories.find(
-          (c) => c.id === +formData.category
-        )?.name,
-        floor: formData.floor,
-        status: formData.status,
-        images: formData.image ? [{ image: formData.image_preview }] : [],
-      };
-
-      setLocalRooms((prev) => [...prev, newRoom]);
-
-      response = await dispatch(createRoomAction(form));
-      console.log("Create response:", response);
-
-      // Refresh rooms from backend
+      setLocalRooms((prev) => [
+        ...prev,
+        {
+          id: tempId,
+          room_number: formData.room_number,
+          category_name: categories.find((c) => c.id === +formData.category)?.name,
+          floor: formData.floor,
+          status: formData.status,
+          images: formData.image ? [{ image: formData.image_preview }] : [],
+        },
+      ]);
+      await dispatch(createRoomAction(form));
+      toast.success("Room added successfully!");
       dispatch(getRoomsAction());
     }
-
-    console.log("Form submission complete. Response:", response);
-
     resetForm();
   } catch (error) {
     console.error("❌ Save Error:", error);
+    toast.error(editId ? "Failed to update room." : "Failed to add room.");
   }
 };
 
