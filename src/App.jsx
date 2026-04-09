@@ -7,7 +7,7 @@ import "./main.css";
 function RouterSelector() {
   const location = useLocation();
 
-  const isAdminRoute = location.pathname.startsWith("/Admin");
+  const isAdminRoute = location.pathname.startsWith("/Admin") || location.pathname.startsWith("/admin");
 
   return isAdminRoute ? <AdminRoutes /> : <AppRoutes />;
 }

@@ -186,7 +186,7 @@ export default function BookingSummaryCard() {
       return;
     }
     await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-    const keyId = orderRes.data?.key_id || process.env.REACT_APP_RAZORPAY_KEY_ID || "";
+    const keyId = orderRes.data?.key_id ||   import.meta.env.VITE_RAZORPAY_KEY_ID || "";
     if (!keyId) {
       toast.error("Payment key not configured");
       setPaying(false);

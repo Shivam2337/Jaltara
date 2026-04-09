@@ -8,7 +8,7 @@ import AdminRooms from "../pages/auth/admin/AdminRooms";
 import AdminPackagePricing from "../components/Admin/Package/AdminPackagePricing";
 import AdminPackage from "../components/Admin/Package/AdminPackage";
 import AdminRide from "../components/Admin/Ride/AdminRide";
-import AdminWaterParkRidePricing from "../components/Admin/Ride/AdminWaterParkRidePricing";
+// import AdminWaterParkRidePricing from "../components/Admin/Ride/AdminWaterParkRidePricing";
 import AdminLayout from "../layout/AdminLayout";
 import AdminLogin from "../components/Admin/AdminLogReg/AdminLogin";
 import AdminRegister from "../components/Admin/AdminLogReg/AdminRegister";
@@ -66,10 +66,10 @@ export default function AdminRoutes() {
         <Route path="AdminPackagePricing" element={<AdminPackagePricing />} />
         <Route path="AdminPackage" element={<AdminPackage />} />
         <Route path="AdminRide" element={<AdminRide />} />
-        <Route
+        {/* <Route
           path="AdminWaterParkRidePricing"
           element={<AdminWaterParkRidePricing />}
-        />
+        /> */}
         <Route path="AdminPackageItem" element={<AdminPackageItem />} />
         <Route path="AdminAddOns" element={<AdminAddOns />} />
         <Route path="AdminAddOnsPricing" element={<AdminAddOnsPricing />} />
