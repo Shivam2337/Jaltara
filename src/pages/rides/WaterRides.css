@@ -133,7 +133,15 @@
   margin-bottom: 6px;
 }
 
-/* BOOK BUTTON */
+.water-rides-page-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
 
 .water-rides-page-book-btn {
   margin-top: 50px;

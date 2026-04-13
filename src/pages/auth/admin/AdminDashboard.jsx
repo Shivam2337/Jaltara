@@ -1,49 +1,35 @@
 import React, { useEffect, useState } from "react";
-import "./AdminDashboard.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import { getDashboardStats } from "../../../redux/actions/AdminDashboardAction";
 import { useNavigate } from "react-router-dom";
-
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, PieChart, Pie,
   Cell, Legend
 } from "recharts";
-
 import AdminAPI from "../../../BaseAPI/AdminAPI";
 
 const PIE_COLORS = ["#339af0", "#51cf66", "#ffd43b"];
 
 const AdminDashboard = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [recentBookings, setRecentBookings] = useState([]);
-  const { loading, summary, lineChart, pieChart } = useSelector(
-    (state) => state.dashboard
-  );
+  const { loading, summary, lineChart, pieChart } = useSelector((state) => state.dashboard);
   const [today, setToday] = useState("");
 
-  // ✅ CHANGE 1 — Single useEffect, removed duplicate
   useEffect(() => {
     const date = new Date();
-    setToday(
-      date.toLocaleDateString("en-US", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    );
+    setToday(date.toLocaleDateString("en-US", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric",
+    }));
 
     dispatch(getDashboardStats());
 
     const fetchRecentBookings = async () => {
       try {
         const { data } = await AdminAPI.get("bookings/history/");
-        console.log("Recent bookings:", data);
         const list = data.results || data;
         setRecentBookings(list.slice(0, 4));
       } catch (err) {
@@ -64,52 +50,52 @@ const AdminDashboard = () => {
     return Object.values(monthMap);
   })();
 
+  const statusClass = (status) => {
+    if (status === "confirmed") return "bg-[#d4edda] text-[#28a745]";
+    if (status === "pending") return "bg-[#ffeeba] text-[#856404]";
+    return "bg-gray-100 text-gray-600";
+  };
+
   return (
-    <div className="dashboard-container">
+    <div className="p-4 sm:p-6 bg-[#f6f7fb] min-h-screen">
 
       {/* HEADER */}
-      <div className="dashboard-header">
-        {/* <div>
-          <p className="welcome-text">Welcome back,</p>
-          <h2 className="manager-title">Resort Manager</h2>
-        </div> */}
-        <div className="dashboard-date">
-          <p>{today}</p>
-        </div>
+      <div className="flex justify-end items-center mb-6">
+        <p className="text-[#777] text-sm">{today}</p>
       </div>
 
       {/* STATS CARDS */}
-      <div className="stats-grid">
-        <div className="stat-card yellow">
-          <p>Total Booking</p>
-          <h2>{loading ? "..." : summary?.total_bookings ?? 0}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6">
+        <div className="bg-[#f6e58d] p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-[#333]">
+          <p className="text-sm">Total Booking</p>
+          <h2 className="text-[28px] font-semibold mt-2">{loading ? "..." : summary?.total_bookings ?? 0}</h2>
         </div>
-        <div className="stat-card green">
-          <p>Total Rooms Booking</p>
-          <h2>{loading ? "..." : summary?.room_bookings ?? 0}</h2>
+        <div className="bg-[#b8e994] p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-[#333]">
+          <p className="text-sm">Total Rooms Booking</p>
+          <h2 className="text-[28px] font-semibold mt-2">{loading ? "..." : summary?.room_bookings ?? 0}</h2>
         </div>
-        <div className="stat-card blue">
-          <p>Total Water Park Packages</p>
-          <h2>{loading ? "..." : summary?.water_park_bookings ?? 0}</h2>
-          <span>Confirmed bookings</span>
+        <div className="bg-[#c7d5f2] p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-[#333]">
+          <p className="text-sm">Total Water Park Packages</p>
+          <h2 className="text-[28px] font-semibold mt-2">{loading ? "..." : summary?.water_park_bookings ?? 0}</h2>
+          <span className="text-[12px] text-[#666]">Confirmed bookings</span>
         </div>
-        <div className="stat-card lightblue">
-          <p>Packages</p>
-          <h3>Premium Experiences</h3>
-          <span>
+        <div className="bg-[#d7e3f8] p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-[#333]">
+          <p className="text-sm">Packages</p>
+          <h3 className="font-semibold mt-2">Premium Experiences</h3>
+          <span className="text-[12px] text-[#666]">
             Combo bookings: {loading ? "..." : summary?.package_bookings ?? 0}
           </span>
         </div>
       </div>
 
       {/* CHARTS */}
-      <div className="chart-section">
-        <div className="chart-box">
-          <h3>Overall Resort Bookings (Monthly)</h3>
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 mb-6">
+        <div className="bg-white p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)]">
+          <h3 className="font-semibold mb-3">Overall Resort Bookings (Monthly)</h3>
           {loading ? (
-            <div className="chart-placeholder">Loading...</div>
+            <div className="h-[220px] bg-[#f2f3f7] rounded-lg flex items-center justify-center text-[#999] text-sm">Loading...</div>
           ) : formattedLineChart.length === 0 ? (
-            <div className="chart-placeholder">No Data</div>
+            <div className="h-[220px] bg-[#f2f3f7] rounded-lg flex items-center justify-center text-[#999] text-sm">No Data</div>
           ) : (
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={formattedLineChart}>
@@ -126,24 +112,16 @@ const AdminDashboard = () => {
           )}
         </div>
 
-        <div className="chart-box small">
-          <h3>Guest Demographics</h3>
+        <div className="bg-white p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)]">
+          <h3 className="font-semibold mb-3">Guest Demographics</h3>
           {loading ? (
-            <div className="chart-placeholder">Loading...</div>
+            <div className="h-[220px] bg-[#f2f3f7] rounded-lg flex items-center justify-center text-[#999] text-sm">Loading...</div>
           ) : pieChart?.length === 0 ? (
-            <div className="chart-placeholder">No Data</div>
+            <div className="h-[220px] bg-[#f2f3f7] rounded-lg flex items-center justify-center text-[#999] text-sm">No Data</div>
           ) : (
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
-                <Pie
-                  data={pieChart}
-                  dataKey="count"
-                  nameKey="type"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  label
-                >
+                <Pie data={pieChart} dataKey="count" nameKey="type" cx="50%" cy="50%" outerRadius={80} label>
                   {pieChart?.map((_, index) => (
                     <Cell key={index} fill={PIE_COLORS[index % PIE_COLORS.length]} />
                   ))}
@@ -157,61 +135,55 @@ const AdminDashboard = () => {
       </div>
 
       {/* RECENT BOOKINGS */}
-      <div className="recent-bookings">
-
-        {/* ✅ CHANGE 2 — Added header row with View All button */}
-        <div className="recent-bookings-header">
-          <h3>Recent Bookings</h3>
+      <div className="bg-white p-5 rounded-xl shadow-[0_2px_6px_rgba(0,0,0,0.08)]">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-semibold text-base m-0">Recent Bookings</h3>
           <button
-            className="view-all-btn"
             onClick={() => navigate("/AdminBookingList")}
+            className="border border-[#339af0] text-[#339af0] px-4 py-1.5 rounded-full text-sm cursor-pointer bg-transparent hover:bg-[#339af0] hover:text-white transition-all duration-200"
           >
             View All →
           </button>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Guest Name</th>
-              <th>Booking Type</th>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {recentBookings.length === 0 ? (
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse mt-2 min-w-[500px]">
+            <thead>
               <tr>
-                <td colSpan="5" style={{ textAlign: "center" }}>
-                  No Recent Bookings
-                </td>
+                {["Guest Name", "Booking Type", "Date", "Amount", "Status"].map((h) => (
+                  <th key={h} className="text-left px-[10px] py-[10px] text-sm text-[#666] border-b border-[#eee]">{h}</th>
+                ))}
               </tr>
-            ) : (
-              recentBookings.map((booking) => (
-                <tr key={booking.id}>
-                  <td>{booking.user_name || booking.user || "—"}</td>
-                  <td>{booking.booking_type || "—"}</td>
-                  <td>
-                    {booking.created_at
-                      ? new Date(booking.created_at).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })
-                      : "—"}
-                  </td>
-                  <td>₹{booking.total_amount || booking.amount || "—"}</td>
-                  <td>
-                    <span className={`status ${booking.status}`}>
-                      {booking.status}
-                    </span>
+            </thead>
+            <tbody>
+              {recentBookings.length === 0 ? (
+                <tr>
+                  <td colSpan="5" className="text-center px-[10px] py-[10px] text-sm border-b border-[#eee]">
+                    No Recent Bookings
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                recentBookings.map((booking) => (
+                  <tr key={booking.id}>
+                    <td className="px-[10px] py-[10px] text-sm border-b border-[#eee]">{booking.user_name || booking.user || "—"}</td>
+                    <td className="px-[10px] py-[10px] text-sm border-b border-[#eee]">{booking.booking_type || "—"}</td>
+                    <td className="px-[10px] py-[10px] text-sm border-b border-[#eee]">
+                      {booking.created_at
+                        ? new Date(booking.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+                        : "—"}
+                    </td>
+                    <td className="px-[10px] py-[10px] text-sm border-b border-[#eee]">₹{booking.total_amount || booking.amount || "—"}</td>
+                    <td className="px-[10px] py-[10px] text-sm border-b border-[#eee]">
+                      <span className={`px-[10px] py-1 rounded-full text-[12px] ${statusClass(booking.status)}`}>
+                        {booking.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AdminRoomManagement.css";
+
 
 // ✅ Correct import paths
 import AdminAuditorium from "../Admin/AdminAuditorium/AdminAuditorium";

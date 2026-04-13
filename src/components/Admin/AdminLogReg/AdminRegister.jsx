@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./AdminRegister.css";
+
 import { FaSearch, FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 

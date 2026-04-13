@@ -4,22 +4,15 @@ import {
   getHallGalleryAction,
   createHallGalleryAction,
   deleteHallGalleryAction,
+  getHallsAction,
 } from "../../../redux/actions/AdminHallAction";
-
-import { getHallsAction } from "../../../redux/actions/AdminHallAction";
-import "./HallGalleryAdmin.css";
 import { toast } from "react-toastify";
 
 const HallGalleryAdmin = () => {
   const dispatch = useDispatch();
   const fileInputRef = useRef();
 
-  const { gallery, galleryLoading, galleryError } = useSelector(
-    (state) => state.hall
-  );
-
-  // ✅ CHANGE 2 — Get halls list from Redux for dropdown
-  const { halls } = useSelector((state) => state.hall);
+  const { gallery, galleryLoading, galleryError, halls } = useSelector((state) => state.hall);
 
   const [title, setTitle] = useState("");
   const [hall, setHall] = useState("");
@@ -27,38 +20,25 @@ const HallGalleryAdmin = () => {
 
   useEffect(() => {
     dispatch(getHallGalleryAction());
-    // ✅ CHANGE 3 — Fetch halls for dropdown
     dispatch(getHallsAction());
   }, [dispatch]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    if (!image) {
-      toast.warn("Please select an image");
-      return;
-    }
-
+    if (!image) { toast.warn("Please select an image"); return; }
     const formData = new FormData();
     formData.append("title", title);
     formData.append("hall", hall);
     formData.append("image", image);
-
     try {
       await dispatch(createHallGalleryAction(formData));
-      setTitle("");
-      setHall("");
-      setImage(null);
+      setTitle(""); setHall(""); setImage(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
-    } catch (err) {
-      console.error("Gallery upload error:", err);
-    }
+    } catch (err) { console.error("Gallery upload error:", err); }
   };
 
   const deleteHandler = (id) => {
-    if (window.confirm("Delete this image?")) {
-      dispatch(deleteHallGalleryAction(id));
-    }
+    if (window.confirm("Delete this image?")) dispatch(deleteHallGalleryAction(id));
   };
 
   const getImageUrl = (imgPath) => {
@@ -67,59 +47,50 @@ const HallGalleryAdmin = () => {
     return `https://api.jaltara.techsofast.com${imgPath}`;
   };
 
+  const inputCls = "px-[10px] py-[10px] border border-[#ccc] rounded-lg text-sm outline-none focus:border-[#2563eb] w-full sm:w-auto";
+
   return (
-    <div className="hall-page">
-      <h2>Hall Gallery Management</h2>
+    <div className="p-6">
+      <h2 className="text-[20px] font-semibold text-[#1f2937] mb-5">Hall Gallery Management</h2>
 
-      <form className="hall-form" onSubmit={submitHandler}>
-
-        {/* ✅ CHANGE 4 — Replaced Hall ID input with dropdown showing hall names */}
-        <select
-          value={hall}
-          onChange={(e) => setHall(e.target.value)}
-          required
-        >
+      {/* FORM */}
+      <form onSubmit={submitHandler} className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8">
+        <select value={hall} onChange={(e) => setHall(e.target.value)} required className={inputCls}>
           <option value="">Select Hall</option>
           {halls?.map((h) => (
-            // ✅ value is hall ID but display is hall title/name
-            <option key={h.id} value={h.id}>
-              {h.title || h.name}
-            </option>
+            <option key={h.id} value={h.id}>{h.title || h.name}</option>
           ))}
         </select>
 
-        <input
-          type="text"
-          placeholder="Image Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+        <input type="text" placeholder="Image Title" value={title}
+          onChange={(e) => setTitle(e.target.value)} required className={inputCls} />
 
-        <input
-          type="file"
-          ref={fileInputRef}
-          onChange={(e) => setImage(e.target.files[0])}
-          accept="image/*"
-          required
-        />
+        <input type="file" ref={fileInputRef} onChange={(e) => setImage(e.target.files[0])}
+          accept="image/*" required className="text-sm" />
 
-        <button type="submit">Upload Image</button>
+        <button type="submit"
+          className="bg-[#0d6efd] hover:bg-[#0b5ed7] text-white px-5 py-[10px] rounded-lg border-none cursor-pointer text-sm transition-colors">
+          Upload Image
+        </button>
       </form>
 
-      {galleryLoading && <p>Loading images...</p>}
-      {galleryError && <p className="error">{galleryError}</p>}
+      {galleryLoading && <p className="text-sm text-[#666]">Loading images...</p>}
+      {galleryError && <p className="text-sm text-red-500">{galleryError}</p>}
 
-      <div className="gallery-grid">
+      {/* GALLERY GRID */}
+      <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))" }}>
         {gallery.length === 0 && !galleryLoading && (
-          <p>No images uploaded yet</p>
+          <p className="text-sm text-[#9ca3af]">No images uploaded yet</p>
         )}
-
         {gallery.map((img) => (
-          <div className="gallery-card" key={img.id}>
-            <img src={getImageUrl(img.image)} alt={img.title} />
-            <h4>{img.title}</h4>
-            <button onClick={() => deleteHandler(img.id)}>Delete</button>
+          <div key={img.id} className="bg-white rounded-xl p-[10px] shadow-[0_0_10px_rgba(0,0,0,0.1)] text-center">
+            <img src={getImageUrl(img.image)} alt={img.title}
+              className="w-full h-[150px] object-cover rounded-xl" />
+            <h4 className="text-sm font-medium mt-2 mb-2 text-[#374151]">{img.title}</h4>
+            <button onClick={() => deleteHandler(img.id)}
+              className="bg-red-500 hover:bg-red-600 text-white border-none px-3 py-[6px] rounded-md text-sm cursor-pointer transition-colors">
+              Delete
+            </button>
           </div>
         ))}
       </div>

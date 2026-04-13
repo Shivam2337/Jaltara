@@ -1,62 +1,43 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getPrivacy,
-  createPrivacy,
-  updatePrivacy,
-} from "../../../redux/actions/AdminPrivacyTermsAction";
-
-/* ================= PARSE FUNCTION ================= */
+import { getPrivacy, createPrivacy, updatePrivacy } from "../../../redux/actions/AdminPrivacyTermsAction";
 
 const parseTerms = (body) => {
   if (!body) return { intro: "", points: [] };
-
   const parts = body.split("\n\n");
-
   const intro = parts[0] || "";
-
   const points = parts.slice(1).map((item) => {
     const lines = item.split("\n");
-
-    return {
-      heading: lines[0]?.replace(/^\d+\.\s*/, ""),
-      text: lines.slice(1).join(" "),
-    };
+    return { heading: lines[0]?.replace(/^\d+\.\s*/, ""), text: lines.slice(1).join(" ") };
   });
-
   return { intro, points };
 };
 
-/* ================= COMPONENT ================= */
+const inputCls   = "text-base px-[8px] py-[8px] rounded-lg border border-[#ccc] outline-none focus:border-[#007bff] transition-all capitalize w-full";
+const taCls      = "text-base px-[8px] py-[8px] rounded-lg border border-[#ccc] outline-none focus:border-[#007bff] transition-all resize-none overflow-hidden min-h-[100px] leading-[1.5] w-full";
+const ptInputCls = "text-base px-[8px] py-[8px] rounded-lg h-max border border-[#ccc] outline-none focus:border-[#007bff] transition-all capitalize w-[200px]";
+const ptTaCls    = "text-base px-[8px] py-[8px] rounded-lg border border-[#ccc] outline-none focus:border-[#007bff] transition-all resize-none overflow-hidden min-h-[80px] leading-[1.5] w-full";
+const btnBlue    = "px-[8px] py-[8px] rounded-lg border-none bg-[#007bff] text-white text-sm cursor-pointer transition-all";
+const btnRed     = "px-[8px] py-[8px] rounded-lg border-none bg-[#ff5959] text-white text-sm cursor-pointer transition-all";
+const btnGray    = "px-[8px] py-[8px] rounded-lg border-none bg-[#cdcdcd] text-sm cursor-pointer transition-all";
 
 export default function AdminPrivacy() {
   const dispatch = useDispatch();
-
-  const { privacy, loading, error } = useSelector(
-    (state) => state.AdminPrivacyTerms || {}
-  );
+  const { privacy, loading, error } = useSelector((state) => state.AdminPrivacyTerms || {});
 
   const [title, setTitle] = useState("");
   const [intro, setIntro] = useState("");
   const [points, setPoints] = useState([]);
   const [isChanged, setIsChanged] = useState(false);
-
   const [isAdding, setIsAdding] = useState(false);
   const [deleteIndex, setDeleteIndex] = useState(null);
+  const [newPoint, setNewPoint] = useState({ heading: "", text: "" });
 
-  const [newPoint, setNewPoint] = useState({
-    heading: "",
-    text: "",
-  });
-
-  useEffect(() => {
-    dispatch(getPrivacy());
-  }, [dispatch]);
+  useEffect(() => { dispatch(getPrivacy()); }, [dispatch]);
 
   useEffect(() => {
     if (privacy && privacy.body) {
       const parsed = parseTerms(privacy.body);
-
       setTitle(privacy.title || "");
       setIntro(parsed.intro || "");
       setPoints(parsed.points || []);
@@ -71,121 +52,56 @@ export default function AdminPrivacy() {
   };
 
   const confirmDelete = (index) => {
-    const updated = points.filter((_, i) => i !== index);
-    setPoints(updated);
+    setPoints(points.filter((_, i) => i !== index));
     setDeleteIndex(null);
     setIsChanged(true);
   };
 
   const handleSubmit = async () => {
-    const body =
-      intro +
-      "\n\n" +
-      points.map((p, i) => `${i + 1}. ${p.heading}\n${p.text}`).join("\n\n");
-
-    const payload = {
-      title,
-      body,
-      slug: "privacy-policy",
-    };
-
+    const body = intro + "\n\n" + points.map((p, i) => `${i + 1}. ${p.heading}\n${p.text}`).join("\n\n");
+    const payload = { title, body, slug: "privacy-policy" };
     try {
-      if (privacy?.id) {
-        await dispatch(updatePrivacy(privacy.id, payload));
-      } else {
-        await dispatch(createPrivacy(payload));
-      }
-    } catch (err) {
-      console.error(err);
-    }
-
+      if (privacy?.id) { await dispatch(updatePrivacy(privacy.id, payload)); }
+      else { await dispatch(createPrivacy(payload)); }
+    } catch (err) { console.error(err); }
     setIsChanged(false);
   };
 
   return (
-    <div className="admin-terms-div">
-      <h5 className="admin-terms-title">Privacy Policy</h5>
+    <div className="mb-20">
+      <h5 className="text-[24px] font-medium text-center mb-8">Privacy Policy</h5>
 
-      {/* ERROR */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
-      {/* TITLE */}
-      <div className="admin-terms-title-box">
-        <div className="admin-terms-title-box-group">
-          <label className="admin-terms-title-box-label">Title</label>
-          <input
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-              setIsChanged(true);
-            }}
-            className="admin-terms-title-box-input"
-          />
+      {/* TITLE + INTRO */}
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-10 mb-6">
+        <div className="flex flex-col">
+          <label className="text-base mb-3">Title</label>
+          <input value={title} onChange={(e) => { setTitle(e.target.value); setIsChanged(true); }} className={inputCls} />
         </div>
-
-        {/* INTRO */}
-        <div className="admin-terms-title-box-group">
-          <label className="admin-terms-title-box-label">
-            Introduction Text
-          </label>
-          <textarea
-            value={intro}
-            onChange={(e) => {
-              setIntro(e.target.value);
-              setIsChanged(true);
-            }}
-            rows={4}
-            className="admin-terms-title-box-textarea"
-          />
+        <div className="flex flex-col">
+          <label className="text-base mb-3">Introduction Text</label>
+          <textarea value={intro} onChange={(e) => { setIntro(e.target.value); setIsChanged(true); }} rows={4} className={taCls} />
         </div>
       </div>
 
       {/* POINTS */}
-      <div className="admin-terms-points-div">
-        <h3 className="admin-terms-points-title">Points</h3>
-
+      <div className="flex flex-col gap-5">
+        <h3>Points</h3>
         {points.map((p, i) => (
-          <div key={i} className="admin-terms-point-box">
-            <p className="admin-terms-point-box-bullet">{i + 1}.</p>
-
-            <input
-              value={p.heading}
-              placeholder="Point Heading"
-              onChange={(e) => handlePointChange(i, "heading", e.target.value)}
-              className="admin-terms-point-box-input"
-            />
-
-            <textarea
-              value={p.text}
-              placeholder="Point Description"
-              onChange={(e) => handlePointChange(i, "text", e.target.value)}
-              rows={3}
-              className="admin-terms-point-box-textarea"
-            />
-
-            <div className="admin-terms-point-remove-box">
+          <div key={i} className="flex flex-col sm:grid gap-3 sm:gap-5 mb-5 p-3 sm:p-0 bg-white sm:bg-transparent rounded-lg sm:rounded-none border sm:border-none border-[#eee]"
+            style={{ gridTemplateColumns: "50px 200px 5fr 1fr" }}>
+            <p className="text-base font-semibold sm:text-center sm:px-[8px] sm:py-[8px]">{i + 1}.</p>
+            <input value={p.heading} placeholder="Point Heading" onChange={(e) => handlePointChange(i, "heading", e.target.value)} className={`${ptInputCls} sm:w-[200px] w-full`} />
+            <textarea value={p.text} placeholder="Point Description" onChange={(e) => handlePointChange(i, "text", e.target.value)} rows={3} className={ptTaCls} />
+            <div className="flex flex-row sm:flex-col gap-2 sm:gap-[10px]">
               {deleteIndex === i ? (
                 <>
-                  <button
-                    onClick={() => confirmDelete(i)}
-                    className="admin-terms-point-remove-btn-confirm"
-                  >
-                    Confirm Remove
-                  </button>
-                  <button
-                    onClick={() => setDeleteIndex(null)}
-                    className="admin-terms-point-remove-btn-cancel"
-                  >
-                    Cancel
-                  </button>
+                  <button onClick={() => confirmDelete(i)} className={btnRed}>Confirm Remove</button>
+                  <button onClick={() => setDeleteIndex(null)} className={btnGray}>Cancel</button>
                 </>
               ) : (
-                <button
-                  className="admin-terms-point-remove-btn"
-                  onClick={() => setDeleteIndex(i)}
-                >
-                  Remove
-                </button>
+                <button onClick={() => setDeleteIndex(i)} className={btnRed}>Remove</button>
               )}
             </div>
           </div>
@@ -193,67 +109,29 @@ export default function AdminPrivacy() {
       </div>
 
       {/* ADD POINT */}
-      <div className="admin-terms-point-add-box">
+      <div className="flex flex-col gap-5 mb-8">
         {isAdding ? (
-          <div className="admin-terms-point-add-box-point">
-            <p>new</p>
-
-            <input
-              placeholder="New Heading"
-              value={newPoint.heading}
-              onChange={(e) =>
-                setNewPoint({ ...newPoint, heading: e.target.value })
-              }
-              className="admin-terms-point-add-box-point-input"
-            />
-
-            <textarea
-              placeholder="New Description"
-              value={newPoint.text}
-              onChange={(e) =>
-                setNewPoint({ ...newPoint, text: e.target.value })
-              }
-              rows={3}
-              className="admin-terms-point-add-box-point-textarea"
-            />
-
-            <div className="admin-terms-point-add-btn-box">
-              <button
-                onClick={() => {
-                  setPoints([...points, newPoint]);
-                  setNewPoint({ heading: "", text: "" });
-                  setIsAdding(false);
-                  setIsChanged(true);
-                }}
-                className="admin-terms-point-add-box-point-confirmAdd"
-              >
-                Confirm Add
-              </button>
-
-              <button
-                onClick={() => setIsAdding(false)}
-                className="admin-terms-point-add-box-point-cancelAdd"
-              >
-                Cancel Add
-              </button>
+          <div className="flex flex-col sm:grid gap-3 sm:gap-5 p-3 sm:p-0 bg-white sm:bg-transparent rounded-lg sm:rounded-none border sm:border-none border-[#eee]"
+            style={{ gridTemplateColumns: "50px 200px 5fr 1fr" }}>
+            <p className="text-[#007bff] capitalize font-semibold sm:px-[8px] sm:py-[8px]">new</p>
+            <input placeholder="New Heading" value={newPoint.heading} onChange={(e) => setNewPoint({ ...newPoint, heading: e.target.value })} className={`${ptInputCls} sm:w-[200px] w-full`} />
+            <textarea placeholder="New Description" value={newPoint.text} onChange={(e) => setNewPoint({ ...newPoint, text: e.target.value })} rows={3} className={ptTaCls} />
+            <div className="flex flex-row sm:flex-col gap-2 sm:gap-[10px]">
+              <button onClick={() => { setPoints([...points, newPoint]); setNewPoint({ heading: "", text: "" }); setIsAdding(false); setIsChanged(true); }} className={btnBlue}>Confirm Add</button>
+              <button onClick={() => setIsAdding(false)} className={btnGray}>Cancel Add</button>
             </div>
           </div>
         ) : (
-          <button
-            onClick={() => setIsAdding(true)}
-            className="admin-terms-point-add-box-point-Add"
-          >
+          <button onClick={() => setIsAdding(true)}
+            className="px-4 py-2 rounded-lg border-none bg-[#007bff] text-white text-base font-medium cursor-pointer transition-all w-max ml-auto mr-[50px]">
             + Add Point
           </button>
         )}
       </div>
 
       {/* SUBMIT */}
-      <button
-        onClick={handleSubmit}
-        disabled={loading || !isChanged}
-        className="admin-terms-save-btn"
-      >
+      <button onClick={handleSubmit} disabled={loading || !isChanged}
+        className="block mx-auto px-4 py-2 rounded-lg border-none bg-[#007bff] text-white text-base font-medium cursor-pointer disabled:opacity-70 transition-all w-max">
         {loading ? "Saving..." : "Save Changes"}
       </button>
     </div>

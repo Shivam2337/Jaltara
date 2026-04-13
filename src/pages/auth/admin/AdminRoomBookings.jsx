@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./AdminRoomBookings.css";
+
 import { FaTrash, FaBell } from "react-icons/fa";
 
 import { useDispatch, useSelector } from "react-redux";
