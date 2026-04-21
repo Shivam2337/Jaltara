@@ -7,6 +7,14 @@ const inputCls = "text-base px-[8px] py-[8px] rounded-lg h-max border border-[#c
 const textareaCls = "text-base px-[8px] py-[8px] rounded-lg border border-[#ccc] outline-none focus:border-[#007bff] transition-all resize-none overflow-hidden min-h-[80px] leading-[1.5] w-full";
 const orderCls = "text-base px-[8px] py-[8px] rounded-lg border border-[#ccc] outline-none focus:border-[#007bff] transition-all text-center w-full sm:w-[60px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none";
 
+/* RowGrid defined OUTSIDE to prevent remount on every keystroke */
+const RowGrid = ({ children }) => (
+  <div className="flex flex-col sm:grid gap-3 sm:gap-5 mb-5 p-3 sm:p-0 bg-white sm:bg-transparent rounded-lg sm:rounded-none border sm:border-none border-[#eee]"
+    style={{ gridTemplateColumns: "4fr 6fr 60px auto auto" }}>
+    {children}
+  </div>
+);
+
 export default function AdminFaq() {
   const dispatch = useDispatch();
   const { faqs } = useSelector((state) => state.Faq);
@@ -46,14 +54,6 @@ export default function AdminFaq() {
 
   const sortedFaqs = [...editFaqs].sort((a, b) => Number(a.order) - Number(b.order));
   const isAddDisabled = !newFaq.question || !newFaq.answer || newFaq.order === "";
-
-  /* Shared row layout — stacks on mobile, grid on sm+ */
-  const RowGrid = ({ children }) => (
-    <div className="flex flex-col sm:grid gap-3 sm:gap-5 mb-5 p-3 sm:p-0 bg-white sm:bg-transparent rounded-lg sm:rounded-none border sm:border-none border-[#eee]"
-      style={{ gridTemplateColumns: "4fr 6fr 60px auto auto" }}>
-      {children}
-    </div>
-  );
 
   return (
     <div className="p-5 bg-[#f8fafc] min-h-screen text-[#333]">

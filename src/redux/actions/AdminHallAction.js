@@ -94,7 +94,7 @@ export const createHallGalleryAction = (formData) => async (dispatch) => {
 
 export const deleteHallGalleryAction = (id) => async (dispatch) => {
   try {
-    await AdminAPI.delete(`cms/admin/hall-images/${id}/`);
+    await AdminAPI.delete(`cms/admin/hall-gallery/${id}/`);
     dispatch(getHallGalleryAction());
     toast.success("Image deleted successfully!");
   } catch (err) {

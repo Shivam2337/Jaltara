@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./SpecialOffers.css";
 import stayImg from "../../../assets/images/rides.png";
 import room1 from "../../../assets/images/Cottage 1.jpg";
 import room2 from "../../../assets/images/Cottage 2.jpg";
@@ -57,45 +56,38 @@ const SpecialOffers = () => {
   };
 
   return (
-    <div className="special-offers-page">
+    <div className="pt-[150px] mx-0 md:mx-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-[150px] pb-8 font-['Outfit']">
       <style>{`@keyframes pkgspin { to { transform: rotate(360deg); } }`}</style>
       {loading && (
-        <div style={{ display: "flex", justifyContent: "center", padding: 24 }}>
+        <div className="flex justify-center p-6">
           <div
             aria-label="Loading packages"
-            style={{
-              width: 36,
-              height: 36,
-              border: "3px solid #e5e7eb",
-              borderTopColor: "#339af0",
-              borderRadius: "50%",
-              animation: "pkgspin 0.8s linear infinite",
-            }}
+            className="w-9 h-9 border-[3px] border-gray-200 border-t-[#339af0] rounded-full animate-[pkgspin_0.8s_linear_infinite]"
           />
         </div>
       )}
 
       {!loading && error && (
-        <div style={{ textAlign: "center", padding: 24 }}>
+        <div className="text-center p-6">
           <img
             src={waterParkImg}
             alt="Error"
-            style={{ maxWidth: 320, width: "90%", borderRadius: 8 }}
+            className="max-w-[320px] w-[90%] rounded-lg mx-auto"
           />
-          <p style={{ marginTop: 12, color: "#64748b" }}>
+          <p className="mt-3 text-slate-500">
              No packages available
           </p>
         </div>
       )}
 
       {!loading && !error && specialPackages.length === 0 && (
-        <div style={{ textAlign: "center", padding: 24 }}>
+        <div className="text-center p-6">
           <img
             src={waterParkImg}
             alt="No packages"
-            style={{ maxWidth: 320, width: "90%", borderRadius: 8 }}
+            className="max-w-[320px] w-[90%] rounded-lg mx-auto"
           />
-          <p style={{ marginTop: 12, color: "#64748b" }}>
+          <p className="mt-3 text-slate-500">
             No packages available
           </p>
         </div>
@@ -106,15 +98,15 @@ const SpecialOffers = () => {
         const images = (pkg.images || []).map((img) => img.image);
         const firstImg = images[0] || stayImg;
         return (
-          <div className="special-offers-card" key={pkg.id}>
-            <div className="special-offers-content">
-              <h2>{pkg.name}</h2>
-              <span className="special-offers-badge">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-[30px] bg-white rounded-2xl p-6 md:p-[30px] shadow-[0_10px_30px_rgba(0,0,0,0.1)] items-center mb-6 last:mb-0" key={pkg.id}>
+            <div className="flex-1 w-full">
+              <h2 className="text-xl sm:text-2xl md:text-[26px] text-[#1a92c2] mb-2.5 text-center md:text-left">{pkg.name}</h2>
+              <span className="inline-block bg-[#ff9800] text-white px-3 py-1.5 text-[13px] sm:text-xs font-bold rounded-[20px] mb-5">
                 🎉 10% OFF – Limited Time
               </span>
 
-              <p className="special-offers-desc">{pkg.description}</p>
-              <div style={{ margin: "10px 0", color: "#334155", fontSize: 14 }}>
+              <p className="text-sm md:text-base text-gray-700 mb-2">{pkg.description}</p>
+              <div className="my-2.5 text-slate-700 text-sm">
                 {pkg.duration_hours != null && (
                   <p><strong>Duration:</strong> {pkg.duration_hours} Hours</p>
                 )}
@@ -122,28 +114,29 @@ const SpecialOffers = () => {
                 <p><strong>Included Children:</strong> {pkg.included_children ?? 0}</p>
                 <p><strong>Included Seniors:</strong> {pkg.included_seniors ?? 0}</p>
               </div>
-              <div className="special-offers-price">
+              <div className="text-base font-medium text-gray-800 my-3">
                 <strong>Price:</strong> ₹{pricing?.base_price || 0}
               </div>
 
-              <button className="special-offers-btn" onClick={handleBook}>
+              <button className="mt-[18px] px-[22px] py-2.5 bg-[#e31b23] text-white border-none rounded-md font-semibold cursor-pointer transition-all duration-300 hover:bg-[#c0161d] w-full sm:w-auto block mx-auto md:mx-0" onClick={handleBook}>
                 Book Now
               </button>
             </div>
 
-            <div className="special-offers-image">
-              <div className="special-offers-image-wrapper">
+            <div className="flex-1 w-full">
+              <div className="relative">
                 <img
                   src={firstImg}
                   alt="Special Offer"
+                  className="w-full rounded-2xl cursor-pointer md:max-h-none max-h-[380px] object-cover"
                   onClick={() => openSlider(images, 0)}
                 />
 
-                <div className="special-offers-main-dots">
+                <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex gap-2">
                   {images.map((_, index) => (
                     <span
                       key={index}
-                      className="special-offers-main-dot"
+                      className="w-[9px] h-[9px] sm:w-2 sm:h-2 bg-white/60 rounded-full cursor-pointer hover:bg-white hover:scale-[1.4] transition-transform"
                       onClick={() => openSlider(images, index)}
                     ></span>
                   ))}
@@ -155,31 +148,31 @@ const SpecialOffers = () => {
       })}
 
       {showSlider && (
-        <div className="special-offers-modal">
-          <span className="special-offers-close" onClick={closeSlider}>
+        <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-[999]">
+          <span className="fixed top-20 right-[30px] text-[26px] text-white cursor-pointer z-10" onClick={closeSlider}>
             ✖
           </span>
 
-          <button className="special-offers-nav left" onClick={prevImage}>
+          <button className="absolute top-1/2 sm:top-1/2 sm:bottom-auto bottom-[10%] left-10 sm:left-10 text-[30px] sm:text-[40px] text-white bg-transparent border-none cursor-pointer" onClick={prevImage}>
             ❮
           </button>
 
           <img
             src={selectedImages[currentIndex]}
-            className="special-offers-slider-img"
+            className="max-w-[95%] sm:max-w-[80%] max-h-[75%] sm:max-h-[80%] rounded-[10px]"
             alt="slider"
           />
 
-          <button className="special-offers-nav right" onClick={nextImage}>
+          <button className="absolute top-1/2 sm:top-1/2 sm:bottom-auto bottom-[10%] right-10 sm:right-10 text-[30px] sm:text-[40px] text-white bg-transparent border-none cursor-pointer" onClick={nextImage}>
             ❯
           </button>
 
-          <div className="special-offers-dots">
+          <div className="absolute bottom-[14%] sm:bottom-[30px] flex gap-2.5">
             {selectedImages.map((_, index) => (
               <span
                 key={index}
-                className={`special-offers-dot ${
-                  index === currentIndex ? "active" : ""
+                className={`w-2.5 h-2.5 rounded-full cursor-pointer transition-transform ${
+                  index === currentIndex ? "bg-white scale-[1.3]" : "bg-white/50"
                 } `}
                 onClick={() => setCurrentIndex(index)}
               ></span>

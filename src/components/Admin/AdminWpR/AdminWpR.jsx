@@ -5,12 +5,77 @@ import { toast } from "react-toastify";
 
 const inputCls = "px-[8px] py-[8px] rounded-md border border-[#ccc] outline-none text-sm focus:border-[#007bff] transition-all w-full";
 
+const getImagePreview = (image) => {
+  if (!image) return null;
+  if (image instanceof File) return URL.createObjectURL(image);
+  return image;
+};
+
+/* ===== SECTION CARD — defined OUTSIDE parent to prevent remount on every keystroke ===== */
+const SectionCard = ({ title, data, type, sections, waterExists, resortExists, isWaterChanged, isResortChanged, handleChange, handleSubmit }) => (
+  <div className="bg-[#f8fafc] rounded-xl p-5 shadow-[0_0_4px_1px_rgba(0,0,0,0.08)]">
+    <h3 className="text-[18px] font-semibold text-center mb-4">{title}</h3>
+    <div className="flex flex-col gap-[10px]">
+      <div className="grid grid-cols-2 gap-5">
+        <div className="flex flex-col gap-2 mb-3">
+          <label className="text-sm font-medium">Name</label>
+          <input className={inputCls} value={type === "water" ? "water_park" : "resort"} disabled />
+        </div>
+        <div className="flex flex-col gap-2 mb-3">
+          <label className="text-sm font-medium">Contact No</label>
+          <input
+            className={inputCls}
+            name="contact_no"
+            value={data.contact_no || ""}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              if (value.length <= 10) handleChange({ target: { name: "contact_no", value } }, type);
+            }}
+          />
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 mb-3">
+        <label className="text-sm font-medium">Heading</label>
+        <input className={inputCls} name="section_heading" value={data.section_heading || ""} onChange={(e) => handleChange(e, type)} maxLength={45} />
+      </div>
+      <div className="flex flex-col gap-2 mb-3">
+        <label className="text-sm font-medium">Text</label>
+        <textarea className={`${inputCls} resize-none overflow-hidden min-h-[100px] leading-[1.5]`} name="section_text" value={data.section_text || ""} onChange={(e) => handleChange(e, type)} maxLength={220} />
+        <div className="text-sm text-right">{(data.section_text || "").length}/220</div>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        {["front_image", "background_image"].map((imgKey) => (
+          <div key={imgKey} className="flex flex-col gap-3 mb-6">
+            <label className="text-sm font-medium capitalize">{imgKey.replace("_", " ")}</label>
+            <div className="w-full h-[150px] rounded-lg overflow-hidden bg-[#f5f5f5] flex items-center justify-center">
+              {getImagePreview(data[imgKey]) && (
+                <img src={getImagePreview(data[imgKey])} alt="" className="w-full h-full object-cover" />
+              )}
+            </div>
+            <label className="bg-[#f1f1f1] hover:bg-[#ddd] px-[8px] py-[8px] text-center rounded-md cursor-pointer text-sm transition-all w-max">
+              Change Image
+              <input type="file" name={imgKey} onChange={(e) => handleChange(e, type)} hidden />
+            </label>
+          </div>
+        ))}
+      </div>
+    </div>
+    <button
+      onClick={() => handleSubmit(type)}
+      disabled={type === "water" ? (waterExists && sections?.length && !isWaterChanged()) : (resortExists && sections?.length && !isResortChanged())}
+      className="block mx-auto px-3 py-3 border-none rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold cursor-pointer transition-all disabled:opacity-50"
+    >
+      {type === "water" ? (waterExists ? "Update Water Park" : "Create Water Park") : (resortExists ? "Update Resort" : "Create Resort")}
+    </button>
+  </div>
+);
+
 const AdminWpRSection = () => {
   const dispatch = useDispatch();
   const { sections } = useSelector((state) => state.wprSections);
 
   const [waterPark, setWaterPark] = useState({});
-  const [resort, setResort] = useState({});
+  const [resort, setResort]       = useState({});
   const [waterExists, setWaterExists] = useState(false);
   const [resortExists, setResortExists] = useState(false);
 
@@ -25,17 +90,11 @@ const AdminWpRSection = () => {
     }
   }, [sections]);
 
-  const getImagePreview = (image) => {
-    if (!image) return null;
-    if (image instanceof File) return URL.createObjectURL(image);
-    return image;
-  };
-
   const handleChange = (e, type) => {
     const { name, value, files } = e.target;
     const val = files ? files[0] : value;
-    if (type === "water") setWaterPark({ ...waterPark, [name]: val });
-    else setResort({ ...resort, [name]: val });
+    if (type === "water") setWaterPark((prev) => ({ ...prev, [name]: val }));
+    else setResort((prev) => ({ ...prev, [name]: val }));
   };
 
   const isImageChanged = (original, current) => current instanceof File || original !== current;
@@ -80,66 +139,14 @@ const AdminWpRSection = () => {
     } catch (err) { toast.error(err || "Something went wrong"); }
   };
 
-  const SectionCard = ({ title, data, type }) => (
-    <div className="bg-[#f8fafc] rounded-xl p-5 shadow-[0_0_4px_1px_rgba(0,0,0,0.08)]">
-      <h3 className="text-[18px] font-semibold text-center mb-4">{title}</h3>
-      <div className="flex flex-col gap-[10px]">
-        <div className="grid grid-cols-2 gap-5">
-          <div className="flex flex-col gap-2 mb-3">
-            <label className="text-sm font-medium">Name</label>
-            <input className={inputCls} value={type === "water" ? "water_park" : "resort"} disabled />
-          </div>
-          <div className="flex flex-col gap-2 mb-3">
-            <label className="text-sm font-medium">Contact No</label>
-            <input className={inputCls} name="contact_no" value={data.contact_no || ""}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, "");
-                if (value.length <= 10) handleChange({ target: { name: "contact_no", value } }, type);
-              }} />
-          </div>
-        </div>
-        <div className="flex flex-col gap-2 mb-3">
-          <label className="text-sm font-medium">Heading</label>
-          <input className={inputCls} name="section_heading" value={data.section_heading || ""} onChange={(e) => handleChange(e, type)} maxLength={45} />
-        </div>
-        <div className="flex flex-col gap-2 mb-3">
-          <label className="text-sm font-medium">Text</label>
-          <textarea className={`${inputCls} resize-none overflow-hidden min-h-[100px] leading-[1.5]`} name="section_text" value={data.section_text || ""} onChange={(e) => handleChange(e, type)} maxLength={220} />
-          <div className="text-sm text-right">{(data.section_text || "").length}/220</div>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          {["front_image", "background_image"].map((imgKey) => (
-            <div key={imgKey} className="flex flex-col gap-3 mb-6">
-              <label className="text-sm font-medium capitalize">{imgKey.replace("_", " ")}</label>
-              <div className="w-full h-[150px] rounded-lg overflow-hidden bg-[#f5f5f5] flex items-center justify-center">
-                {getImagePreview(data[imgKey]) && (
-                  <img src={getImagePreview(data[imgKey])} alt="" className="w-full h-full object-cover" />
-                )}
-              </div>
-              <label className="bg-[#f1f1f1] hover:bg-[#ddd] px-[8px] py-[8px] text-center rounded-md cursor-pointer text-sm transition-all w-max">
-                Change Image
-                <input type="file" name={imgKey} onChange={(e) => handleChange(e, type)} hidden />
-              </label>
-            </div>
-          ))}
-        </div>
-      </div>
-      <button
-        onClick={() => handleSubmit(type)}
-        disabled={type === "water" ? (waterExists && sections?.length && !isWaterChanged()) : (resortExists && sections?.length && !isResortChanged())}
-        className="block mx-auto px-3 py-3 border-none rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold cursor-pointer transition-all disabled:opacity-50"
-      >
-        {type === "water" ? (waterExists ? "Update Water Park" : "Create Water Park") : (resortExists ? "Update Resort" : "Create Resort")}
-      </button>
-    </div>
-  );
+  const sharedProps = { sections, waterExists, resortExists, isWaterChanged, isResortChanged, handleChange, handleSubmit };
 
   return (
     <div className="p-5 bg-[#f8fafc]">
       <h2 className="text-[22px] font-semibold font-[Playfair_Display] mb-4">Water Park & Resort Sections</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[30px] ">
-        <SectionCard title="Water Park" data={waterPark} type="water" />
-        <SectionCard title="Resort" data={resort} type="resort" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+        <SectionCard title="Water Park" data={waterPark} type="water" {...sharedProps} />
+        <SectionCard title="Resort"     data={resort}    type="resort" {...sharedProps} />
       </div>
     </div>
   );

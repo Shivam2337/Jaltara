@@ -91,6 +91,17 @@ body {
   animation: bodybg 60s ease-in-out infinite;
 }
 
+@keyframes contactFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes bodybg {
   0% {
     background-position: 0% 0%;

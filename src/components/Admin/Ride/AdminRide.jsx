@@ -55,6 +55,19 @@ export default function RideManagement() {
 
   const handleDelete = (id) => dispatch(deleteRidesAction(id));
 
+  const parseApiError = (err) => {
+    const data = err?.response?.data;
+    if (!data) return err?.message || "Something went wrong";
+    if (typeof data === "string") return data;
+    // collect all field errors into readable messages
+    return Object.entries(data)
+      .map(([field, msgs]) => {
+        const msg = Array.isArray(msgs) ? msgs.join(", ") : msgs;
+        return `${field}: ${msg}`;
+      })
+      .join(" | ");
+  };
+
   const handleSubmit = async () => {
     if (!formData.name || !formData.slug || !formData.description || !formData.min_age || !formData.max_age) {
       toast("Please fill in all fields."); return;
@@ -68,11 +81,23 @@ export default function RideManagement() {
       let response;
       if (editingId) {
         response = await dispatch(editRidesAction(editingId, payload));
-        toast.success("Ride updated successfully!");
       } else {
         response = await dispatch(addRideAction(payload));
+      }
+
+      // check for API error returned in response
+      if (response?.error || response?.payload?.error) {
+        const errMsg = parseApiError({ response: { data: response?.payload } });
+        toast.error(errMsg);
+        return;
+      }
+
+      if (editingId) {
+        toast.success("Ride updated successfully!");
+      } else {
         toast.success("Ride added successfully!");
       }
+
       const rideId = response?.payload?.id || response?.id;
       if (formData.image && rideId) {
         const imageData = new FormData();
@@ -88,7 +113,7 @@ export default function RideManagement() {
       setEditingId(null);
       setFormData(emptyForm);
     } catch (err) {
-      toast.error(editingId ? "Failed to update ride." : "Failed to add ride.");
+      toast.error(parseApiError(err));
     }
   };
 
@@ -140,8 +165,6 @@ export default function RideManagement() {
           <tbody>
             {loading ? (
               <tr><td colSpan="9" className="text-center py-6 text-sm text-[#999]">Loading...</td></tr>
-            ) : error ? (
-              <tr><td colSpan="9" className="text-center py-6 text-sm text-red-500">Error: {error}</td></tr>
             ) : filteredRides?.length === 0 ? (
               <tr><td colSpan="9" className="text-center py-6 text-sm text-[#999]">No data found</td></tr>
             ) : (

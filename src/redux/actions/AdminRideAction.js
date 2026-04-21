@@ -16,9 +16,13 @@ export const getRidesAction = () => async (dispatch) => {
     });
 
   } catch (error) {
+    const errPayload = error.response?.data;
+    const errMsg = errPayload && typeof errPayload === "object"
+      ? Object.entries(errPayload).map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(", ") : v}`).join(" | ")
+      : error.message;
     dispatch({
       type: "RIDE_LIST_FAIL",
-      payload: error.response?.data || error.message,
+      payload: errMsg,
     });
   }
 };
@@ -47,9 +51,14 @@ export const addRideAction = (rideData) => async (dispatch) => {
 
     console.log("Ride error:", error.response?.data);
 
+    const errPayload = error.response?.data;
+    const errMsg = errPayload && typeof errPayload === "object"
+      ? Object.entries(errPayload).map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(", ") : v}`).join(" | ")
+      : error.message;
+
     dispatch({
       type: "RIDE_ADD_FAIL",
-      payload: error.response?.data || error.message,
+      payload: errMsg,
     });
     throw error;
   }

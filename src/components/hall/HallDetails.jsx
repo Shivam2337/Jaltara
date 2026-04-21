@@ -1,182 +1,95 @@
 import React from "react";
-import "../aboutPage/AboutStory.css";
 import fallbackImg from "../../assets/home/amenities/auditorium.png";
+
+const badgeCls = "bg-[#eef2ff] border border-[#e5e7eb] px-[10px] py-[6px] rounded-full text-[13px] text-[#334155] flex items-center gap-[6px]";
+const iconCls  = "material-symbols-rounded text-[16px] text-[#667eea]";
+
+function StorySection({ imageUrl, children }) {
+  return (
+    <section className="w-[98%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-[60px] mb-24 sm:mb-32 px-4 md:px-0">
+      <div className="w-full">
+        <img
+          className="block w-full rounded-[10px]"
+          src={imageUrl}
+          alt="Hall"
+          onError={(e) => { if (e.currentTarget.src !== fallbackImg) e.currentTarget.src = fallbackImg; }}
+        />
+      </div>
+      <div className="flex flex-col gap-[14px] px-0 md:px-4">
+        {children}
+      </div>
+    </section>
+  );
+}
 
 export default function HallDetails({ hallData, loading, error }) {
   const sanitize = (u) => (typeof u === "string" ? u.replace(/`/g, "").trim() : u);
 
-  if (loading) {
-    return (
-      <section className="about-page-story" >
-        <div className="about-page-story-img-wrapper">
-          <div className="about-page-story-img" style={{ width: "100%", height: 320, background: "#eee", borderRadius: 12 }} />
-        </div>
-        <div className="about-page-story-text-box">
-          <h2 className="about-page-story-text-heading">- Our Hall</h2>
-          <p className="about-page-story-text">Loading...</p>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className="about-page-story">
-        <div className="about-page-story-img-wrapper">
-          <div className="about-page-story-img" style={{ width: "100%", height: 320, background: "#eee", borderRadius: 12 }} />
-        </div>
-        <div className="about-page-story-text-box">
-          <h2 className="about-page-story-text-heading">- Our Hall</h2>
-          <p className="about-page-story-text">Failed to load content</p>
-        </div>
-      </section>
-    );
-  }
-
-  const imageUrl = sanitize(hallData?.main_image) || fallbackImg;
-  const baseText = hallData?.description || "";
-  const featuresList = Array.isArray(hallData?.features) ? hallData.features : [];
-  const facilities = featuresList.filter((f) => f.feature_type === "FACILITY");
-  const events = featuresList.filter((f) => f.feature_type === "EVENT");
-  const extra = [
-    `Capacity: ${hallData?.capacity || "—"} people`,
-    `Area: ${hallData?.area || "—"} sq. ft.`,
-    `Type: ${hallData?.hall_type || "—"}`,
-    `Air Conditioning: ${hallData?.air_conditioning ? "Yes" : "No"}`,
-    `Parking: ${hallData?.parking || "—"}`,
-  ];
-  const paragraphs = [baseText, ...extra].filter(Boolean).flatMap((t) =>
-    String(t)
-      .split("\n")
-      .map((p) => p.trim())
-      .filter(Boolean)
+  if (loading) return (
+    <StorySection imageUrl={fallbackImg}>
+      <h2 className="font-[Playfair_Display] text-[24px] sm:text-[32px] font-medium mb-5">- Our Hall</h2>
+      <p className="leading-[1.7] text-[14px] sm:text-[18px]">Loading...</p>
+    </StorySection>
   );
 
+  if (error) return (
+    <StorySection imageUrl={fallbackImg}>
+      <h2 className="font-[Playfair_Display] text-[24px] sm:text-[32px] font-medium mb-5">- Our Hall</h2>
+      <p className="leading-[1.7] text-[14px] sm:text-[18px]">Failed to load content</p>
+    </StorySection>
+  );
+
+  const imageUrl    = sanitize(hallData?.main_image) || fallbackImg;
+  const featuresList = Array.isArray(hallData?.features) ? hallData.features : [];
+  const facilities  = featuresList.filter((f) => f.feature_type === "FACILITY");
+  const events      = featuresList.filter((f) => f.feature_type === "EVENT");
+
   return (
-    <section className="about-page-story">
-      <div className="about-page-story-img-wrapper">
-        <img
-          className="about-page-story-img"
-          src={imageUrl}
-          alt={hallData?.title || "Hall"}
-          onError={(e) => {
-            if (e.currentTarget.src !== fallbackImg) e.currentTarget.src = fallbackImg;
-          }}
-        />
+    <StorySection imageUrl={imageUrl}>
+      <h2 className="font-[Playfair_Display] text-[24px] sm:text-[32px] font-medium mb-[10px] sm:mb-5">
+        {hallData?.title || "Our Hall"}
+      </h2>
+      <p className="leading-[1.7] text-[14px] sm:text-[18px]">{hallData?.tagline}</p>
+      <p className="leading-[1.7] text-[14px] sm:text-[18px]">{hallData?.description}</p>
+
+      {/* BADGES */}
+      <div className="flex flex-wrap gap-2 my-2">
+        <span className={badgeCls}><span className={iconCls}>groups</span>{hallData?.capacity ? `${hallData.capacity} people` : "Capacity —"}</span>
+        <span className={badgeCls}><span className={iconCls}>square_foot</span>{hallData?.area ? `${hallData.area} sq.ft.` : "Area —"}</span>
+        <span className={badgeCls}><span className={iconCls}>apartment</span>{hallData?.hall_type || "Type —"}</span>
+        <span className={badgeCls}><span className={iconCls}>ac_unit</span>{hallData?.air_conditioning ? "AC: Yes" : "AC: No"}</span>
+        <span className={badgeCls}><span className={iconCls}>local_parking</span>{hallData?.parking === true || hallData?.parking === "true" ? "Parking: Yes" : "Parking: No"}</span>
       </div>
 
-      <div className="about-page-story-text-box">
-        <h2 className="about-page-story-text-heading"> {hallData?.title || "Our Hall"}</h2>
-        <p className="about-page-story-text-tagline">{hallData?.tagline}</p>
-        <p className="about-page-story-text">{hallData?.description}</p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "8px 0 12px" }}>
-          <span style={{ background: "#eef2ff", border: "1px solid #e5e7eb", padding: "6px 10px", borderRadius: 16, fontSize: 13, color: "#334155", display: "flex", alignItems: "center", gap: 6 }}>
-            <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#667eea" }}>groups</span>
-            {hallData?.capacity ? `${hallData.capacity} people` : "Capacity —"}
-          </span>
-
-          <span style={{ background: "#eef2ff", border: "1px solid #e5e7eb", padding: "6px 10px", borderRadius: 16, fontSize: 13, color: "#334155", display: "flex", alignItems: "center", gap: 6 }}>
-            <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#667eea" }}>square_foot</span>
-            {hallData?.area ? `${hallData.area} sq.ft.` : "Area —"}
-          </span>
-          <span style={{ background: "#eef2ff", border: "1px solid #e5e7eb", padding: "6px 10px", borderRadius: 16, fontSize: 13, color: "#334155", display: "flex", alignItems: "center", gap: 6 }}>
-            <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#667eea" }}>apartment</span>
-            {hallData?.hall_type || "Type —"}
-          </span>
-          <span style={{ background: "#eef2ff", border: "1px solid #e5e7eb", padding: "6px 10px", borderRadius: 16, fontSize: 13, color: "#334155", display: "flex", alignItems: "center", gap: 6 }}>
-            <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#667eea" }}>ac_unit</span>
-            {hallData?.air_conditioning ? "AC: Yes" : "AC: No"}
-          </span>
-          <span style={{ background: "#eef2ff", border: "1px solid #e5e7eb", padding: "6px 10px", borderRadius: 16, fontSize: 13, color: "#334155", display: "flex", alignItems: "center", gap: 6 }}>
-            <span className="material-symbols-rounded" style={{ fontSize: 16, color: "#667eea" }}>local_parking</span>
-            {hallData?.parking || "Parking —"}
-          </span>
+      {/* FACILITIES */}
+      {facilities.length > 0 && (
+        <div>
+          <h3 className="text-[18px] text-[#334155] my-2">Facilities</h3>
+          <div className="flex flex-wrap gap-[10px]">
+            {facilities.map((f) => (
+              <span key={f.id} className="inline-flex items-center gap-[6px] px-3 py-2 rounded-full bg-[#eef2ff] text-[#334155] text-[14px] border border-[#e5e7eb]">
+                <span className="material-symbols-rounded text-[18px] text-[#667eea]">check_circle</span>
+                {f.name}
+              </span>
+            ))}
+          </div>
         </div>
+      )}
 
-
-
-
-
-        {facilities.length > 0 && (
-          <div >
-            <h3 style={{ margin: "8px 0", fontSize: 18, color: "#334155" }}>Facilities</h3>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-              {facilities.map((f) => (
-                <span
-                  key={f.id}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "8px 12px",
-                    borderRadius: 9999,
-                    background: "#eef2ff",
-                    color: "#334155",
-                    fontSize: 14,
-                    border: "1px solid #e5e7eb",
-                  }}
-                >
-                  <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#667eea" }}>
-                    check_circle
-                  </span>
-                  {f.name}
-                </span>
-              ))}
-            </div>
+      {/* EVENTS */}
+      {events.length > 0 && (
+        <div className="mt-[14px]">
+          <h3 className="text-[18px] text-[#334155] my-2">Perfect For</h3>
+          <div className="flex flex-wrap gap-[10px]">
+            {events.map((e) => (
+              <span key={e.id} className="inline-flex items-center gap-[6px] px-3 py-2 rounded-full bg-[#f3e8ff] text-[#3b0764] text-[14px] border border-[#edd4ff]">
+                <span className="material-symbols-rounded text-[18px] text-[#7c3aed]">celebration</span>
+                {e.name}
+              </span>
+            ))}
           </div>
-        )}
-
-        {events.length > 0 && (
-          <div style={{ marginTop: 14 }}>
-            <h3 style={{ margin: "8px 0", fontSize: 18, color: "#334155" }}>Perfect For</h3>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-              {events.map((e) => (
-                <span
-                  key={e.id}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "8px 12px",
-                    borderRadius: 9999,
-                    background: "#f3e8ff",
-                    color: "#3b0764",
-                    fontSize: 14,
-                    border: "1px solid #edd4ff",
-                  }}
-                >
-                  <span className="material-symbols-rounded" style={{ fontSize: 18, color: "#7c3aed" }}>
-                    celebration
-                  </span>
-                  {e.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-        {/* {(hallData?.phone_number || hallData?.email) && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 12 }}>
-            {hallData?.phone_number && (
-              <a
-                href={`tel:${sanitize(hallData.phone_number)}`}
-                style={{ background: "#667eea", color: "#fff", borderRadius: 8, padding: "8px 12px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6 }}
-              >
-                <span className="material-symbols-rounded" style={{ fontSize: 18 }}>call</span>
-                Call Now
-              </a>
-            )}
-            {hallData?.email && (
-              <a
-                href={`mailto:${sanitize(hallData.email)}`}
-                style={{ background: "transparent", color: "#667eea", border: "2px solid #667eea", borderRadius: 8, padding: "6px 12px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6 }}
-              >
-                <span className="material-symbols-rounded" style={{ fontSize: 18 }}>mail</span>
-                Email Us
-              </a>
-            )}
-          </div>
-        )} */}
-      </div>
-    </section>
+        </div>
+      )}
+    </StorySection>
   );
 }
